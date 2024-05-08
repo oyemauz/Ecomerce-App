@@ -1,0 +1,255 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;  
+  }
+
+  html{
+    font-size: 10px;
+  }
+
+  body{
+    font-family: "Poppins", sans-serif;
+    padding: 1rem;
+    line-height: 1.5;
+    border-radius: 0.5rem;
+  }
+
+  .app{
+    background-color: var(--color-slate-100);
+    /* height: calc(100vh - 2rem); */
+  }
+
+  .flex{
+    display: flex;
+    align-items: center;
+  }
+
+  .flexGap{
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+  }
+
+  .flexBetween{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+ .flexDirection{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+ }
+
+ .gap{
+  gap:5rem;
+ }
+
+ /* Header CSS */
+
+ header{
+   font-size: 1.3rem;
+ }
+
+ .wishListcart{
+  padding: 0 1.8rem;
+  background-color: white;
+ }
+
+ header img{
+  width: 100px;
+  height: 60px;
+ }
+
+ header p{
+  font-size: 10px;
+ }
+
+ /* Main Section */
+
+  .app_img{
+  background-image: url('./images/main_img.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  /* filter: brightness(0.7);  */
+ } 
+
+
+ .app_img div{
+  font-size: 1.4rem;
+  color: white;
+  position: absolute;
+  top: 15rem;
+  left: 6rem;
+  font-weight: bold;
+ }
+
+ .app_img div span{
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+ }
+
+ .app_img div h1{
+  font-size: 4.2rem;
+  letter-spacing: 3px;
+  margin-bottom: 4rem;
+  line-height: 1;
+ }
+
+main ion-icon, .responsiveSidebar ul li ion-icon, .wishListcart ion-icon{
+  font-size: 20px;
+}
+
+main ion-icon, .responsiveSidebar ion-icon{
+  color: var(--color-lime-500);
+}
+
+main ul li:first-child ion-icon{
+  color:white;
+}
+
+main ul li:last-child ion-icon{
+  color:#000;
+}
+
+
+/* Custom Rating Star  */
+
+.icons ion-icon{
+  font-size: 25px;
+}
+
+.icons span{
+  cursor: pointer;
+}
+
+.icons .last ion-icon{
+  background-color: #000;
+  padding: .5rem;
+  border-radius: 50%;
+  color: #fff;
+}
+
+header ul li ion-icon{
+display: none;
+}
+
+.hidemobileview{
+left:-250px;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 800px) {
+ html{
+  font-size: 9px;
+ }
+
+ .app_img div span{
+  font-size: 1.6rem;
+ }
+ .app_img div h1{
+  font-size: 2.6rem;
+ }
+
+ .app_img{
+  height: 300px;
+ }
+
+ header ul li ion-icon{
+  display: block;
+ }
+
+ .responsiveSidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  overflow-y: scroll;
+  z-index: 1;
+  background-color: var(--color-slate-100);
+  display: block;
+  transition: 1.5s;
+ }
+
+ .hideResponsiceSidebar{
+  display: none;
+  transition: 1.5s;
+}
+
+ .responsiveSidebar img {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 25%;
+  width: 50%;
+ }
+
+ .responsiveSidebar ul {
+  display: block;
+  position: relative;
+  top:90px;
+  background-color: var(--color-slate-100);
+  color: black;
+ }
+
+ .responsiveSidebar ul li{
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  font-size: 1.3rem;
+ }
+
+ .responsiveSidebar nav{
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+ }
+
+ .responsiveSidebar div{
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+ }
+
+ .menu ion-icon{
+  font-size: 3.4rem;
+ }
+
+ .menu {
+  position: relative;
+  top: 0px;
+  left: 240px;
+  cursor: pointer;
+  transition: 3s;
+ }
+
+}
+
+@media screen and (max-width:650px){
+
+  main ul li{
+    align-items: start;
+}
+
+  main ul li span{
+    display: none;
+  }
+  
+  html{
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width:400px){
+  .hideWishlist{
+    display: none;
+   }
+  
+}
