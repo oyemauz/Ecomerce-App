@@ -18,8 +18,9 @@ function HeaderWishListCart() {
         }
       }, [isMobile, setSidebar]); 
       
+    //   sss
     
-    return (
+    return (   
         <>
         <div className='flexBetween wishListcart'>
             {sidebar?<div onClick={toggleMenu} className={`${menu ?"menu":null}`} ><ion-icon  name="menu-outline"></ion-icon></div>:<Logo/>}
@@ -31,7 +32,7 @@ function HeaderWishListCart() {
                 </span>
             </div>
         </div>
-        </>
+        </> 
     )
 }
 
