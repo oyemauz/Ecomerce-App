@@ -4,9 +4,10 @@ import styled from 'styled-components';
 const Footr=styled.div`
 padding:10px;
 font-size:1.4rem;
-padding:4rem;
+padding:4rem 4rem 0 4rem;
 background-color:white;
 margin-top:2.4rem;
+margin-bottom:1.4rem;
 `;
 
 const AboveFooter=styled.div`
@@ -88,7 +89,7 @@ h3{
 
 function Footer() {
     return (
-        <Footr>
+        <Footr className="footer">
         <AboveFooter>
             <div className="app_footer">
                 <h1>Grocery On the Go</h1>
@@ -139,6 +140,7 @@ function Footer() {
             </BelowFooter>  
             <p>Stay connected with Grocery On the Go for convenient and hassle-free shopping experiences!</p>
         </div>
+            {/* <span>&copy; All rights reserved</span> */}
         </Footr>
     )
 }

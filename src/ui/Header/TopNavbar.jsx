@@ -33,7 +33,6 @@ border-radius:2px;
 }
 `;
 
-
 const DIV=styled.div`
 display:flex;
 align-items:center;
@@ -50,7 +49,6 @@ justify-content:space-around;
  @media screen and (max-width:800px){
     display:flex;
     align-items:left;
-    // muaz
 }
 `;
 

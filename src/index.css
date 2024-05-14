@@ -166,6 +166,14 @@ left:-250px;
   font-size: 1.8rem;
 }
 
+
+.footer::after{
+   content: "\00A9 All rights reserved";
+  text-align: center;
+  display: block;
+  color: rgba(147,147,147,1);
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 800px) {
