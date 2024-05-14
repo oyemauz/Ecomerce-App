@@ -3,7 +3,7 @@ import styled from "styled-components";
 import MainQuotes from "../ui/MainSection/MainQuotes";
 import MainNavbar from "../ui/Header/MainNavbar";
 import usePdata from "../ThemeContext/usePData";
-import TopNavbar from "../ui/Header/TopNavbar";
+// import TopNavbar from "../ui/Header/TopNavbar";
 import Logo from "../ui/Header/Logo";
 import { useMediaQuery } from 'react-responsive';
 // import {useState} from 'react';
@@ -52,7 +52,7 @@ export default function ResponsiveSideBar(){
                 <Logo/>
                 <MainNavbar/>
                 <ListItems/>
-                <TopNavbar/>
+                {/* <TopNavbar/> */}
             </div>
             <MainQuotes/>
             </>

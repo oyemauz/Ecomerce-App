@@ -37,7 +37,6 @@ gap:1rem;
     letter-spacing: 1.1px;
     padding: 1.6rem 0;
 }
-
 `
 
 function MainNavbar() {

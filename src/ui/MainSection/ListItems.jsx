@@ -13,12 +13,15 @@ font-size:1.3rem;
 font-weight:500;
 
 
-
 // &:first-child{
 //     color:white;
 //     background-color:var(--color-lime-500);
 // }
 
+// &:first-child{
+//     color:white;
+//     background-color:var(--color-lime-500);
+// }
 `
 
 const LI=styled.li`
@@ -32,9 +35,11 @@ cursor:pointer;
     text-decoration:underline;
 }
 
-&.category{
-    color:white;
-    background-color:var(--color-lime-500);
+@media screen and (max-width:800px){
+    &.category{
+        color:white;
+        background-color:var(--color-lime-500);
+    }
 }
 
 &:last-child{
@@ -42,27 +47,7 @@ list-style:none;
 justify-content:center;
 font-weight:600;
 }
-
 `
-
-// const SubCategories = styled.ul.attrs(({ isVisible }) => ({
-//     style: {
-//       display: isVisible ? 'block' : 'none',
-//     },
-//   }))`
-
-//   background-color: #f9f9f9;
-//   border-radius: 2px;
-//   margin-top: 10px;
-  
-// `;
-
-// const SubCategoryLI=styled.li`
-
-// margin-top: 10px; /* Adjust as needed */
-// `;
-
-
 
 function ListItems() {
 
@@ -72,19 +57,11 @@ function ListItems() {
       setShowSubCategories(!showSubCategories);
     };
   
-    // function displayCategories(){
-    //     if(window.innerWidth < 650){
-    //         return{
-                
-    //         }
-    //     }
-    // }
-
     return (
         <>
             <UL>
-                <LI className="category" onClick={handleToggleSubCategories}><ion-icon  name={Data.Categories.categories.logo}></ion-icon> <span> {Data.Categories.categories.category}</span></LI>
-                {/* <SubCategories isVisible={showSubCategories}> */}
+                <LI className="category" onClick={handleToggleSubCategories}><ion-icon  name={Data.Categories.categories.logo}></ion-icon> <span> {Data.Categories.categories.category}</span> <span className="category_icon"><ion-icon name="chevron-down-outline"></ion-icon></span> </LI>
+                <div className={showSubCategories?"subItems":null}>
                     <LI><ion-icon  name={Data.Categories.clean_household.logo}></ion-icon> <span> {Data.Categories.clean_household.clean_household}</span></LI>
                     <LI><ion-icon  name={Data.Categories.egg_meat_fish.logo}></ion-icon> <span> {Data.Categories.egg_meat_fish.egg_meat_fish}</span></LI>
                     <LI><ion-icon  name={Data.Categories.fruits_vegetable.logo}></ion-icon> <span> {Data.Categories.fruits_vegetable.fruits_vegetable}</span></LI>
@@ -92,7 +69,7 @@ function ListItems() {
                     <LI><ion-icon  name={Data.Categories.medistore.logo}></ion-icon> <span> {Data.Categories.medistore.medistore}</span></LI>
                     <LI><ion-icon  name={Data.Categories.online_category_services.logo}></ion-icon> <span> {Data.Categories.online_category_services.online_category_services}</span></LI>
                     <LI><ion-icon  name={Data.Categories.more_categories.logo}></ion-icon> <span> {Data.Categories.more_categories.more_categories}</span></LI>
-                {/* </SubCategories> */}
+                </div>
             </UL>
         </>
     )

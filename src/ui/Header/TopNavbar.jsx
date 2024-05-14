@@ -36,7 +36,7 @@ border-radius:2px;
 
 const DIV=styled.div`
 display:flex;
-// align-items:center;
+align-items:center;
 justify-content:space-around;
 
 @media screen and (max-width:${(props)=>props.theme.breakpoints.md}){

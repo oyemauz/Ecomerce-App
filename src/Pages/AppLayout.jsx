@@ -2,6 +2,7 @@ import styled from "styled-components"
 // import  usePdata  from "../ThemeContext/usePData";
 import Categories from "../ui/Categories/Categories";
 import ResponsiveSideBar from "../Styles/ResponsiveSideBar";
+import Footer from '../ui/common/Footer';
 // import PropTypes from 'prop-types';
 
 
@@ -13,31 +14,26 @@ display: block;
 @media screen and (max-width:${(props)=>props.theme.breakpoints.xl}){
 
     padding: 1.4rem 1rem 0 1rem;
-
 }
 
 @media screen and (max-width:1100px){
 
     padding: 1.4rem 0 1rem 0;
-
 }
 `;
 
 
 function AppLayout() {
     // const {sidebar,setSidebar}=usePdata();
-
-
-
       
     return (
         <Section>
             <ResponsiveSideBar/>
             <Categories/>
+            <Footer/>
         </Section>
     )
 }
-
 
 
 // AppLayout.propTypes = {

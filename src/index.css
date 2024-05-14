@@ -106,18 +106,27 @@ main ion-icon, .responsiveSidebar ul li ion-icon, .wishListcart ion-icon{
   font-size: 20px;
 }
 
-main ion-icon, .responsiveSidebar ion-icon{
+ .responsiveSidebar ion-icon{
   color: var(--color-lime-500);
 }
 
-main ul li:first-child ion-icon{
-  color:white;
+main ul div li ion-icon,main ul li:first-child ion-icon{
+  color:var(--color-lime-500);
 }
 
 main ul li:last-child ion-icon{
-  color:#000;
+  color:var(--color-lime-500);
 }
 
+.category ion-icon{
+  color: white;
+}
+
+.category .category_icon{
+  display: flex;
+  position: absolute;
+  right: 20px;
+}
 
 /* Custom Rating Star  */
 
@@ -142,6 +151,19 @@ display: none;
 
 .hidemobileview{
 left:-250px;
+}
+
+.below_footer div a:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.below_footer p{
+  width: 30%;
+}
+
+.below_footer ion-icon{
+  font-size: 1.8rem;
 }
 
 /* Media Queries */
@@ -209,13 +231,16 @@ left:-250px;
  .responsiveSidebar nav{
   display: flex;
   flex-direction: column;
-  background-color: aqua;
  }
 
  .responsiveSidebar div{
   display: flex;
   flex-direction: column;
-  background-color: aqua;
+ }
+
+ .responsiveSidebar .subItems{
+  transition: 1.5s;
+  display: none;
  }
 
  .menu ion-icon{
@@ -229,6 +254,10 @@ left:-250px;
   cursor: pointer;
   transition: 3s;
  }
+
+ .below_footer p{
+  width: 50%;
+}
 
 }
 
@@ -247,9 +276,27 @@ left:-250px;
   }
 }
 
+@media screen and (max-width:550px){
+  .below_footer ion-icon{
+    display: none;
+   }
+   .below_footer p{
+    display: none;
+   }
+   
+   .below_footer::after {
+    content: "\00A9 All rights reserved"; /* Unicode for © symbol */
+    display: block;
+    width: 100%;
+    text-align: center; /* Center the content */
+    margin: 0; /* Remove any default margin */
+    color:rgba(147,147,147,1);
+  }
+
+}
+
 @media screen and (max-width:400px){
   .hideWishlist{
     display: none;
    }
-  
 }
