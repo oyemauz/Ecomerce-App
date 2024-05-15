@@ -3,18 +3,15 @@ import styled from "styled-components";
 import MainQuotes from "../ui/MainSection/MainQuotes";
 import MainNavbar from "../ui/Header/MainNavbar";
 import usePdata from "../ThemeContext/usePData";
-// import TopNavbar from "../ui/Header/TopNavbar";
 import Logo from "../ui/Header/Logo";
 import { useMediaQuery } from 'react-responsive';
-// import {useState} from 'react';
+import { useLocation } from "react-router-dom";
 
 const Main=styled.main`
 
 display:grid;
 grid-template-columns:30rem 1fr;
 gap:2rem;
-margin-bottom:2.8rem;
-
 position:relative;
 
 @media screen and (max-width:650px){
@@ -40,9 +37,16 @@ position:relative;
 
 export default function ResponsiveSideBar(){
 
-        const{menu,toggleSidebar} =usePdata();
-        const isMobile = useMediaQuery({ maxWidth: 800 });
-        const s = isMobile ? ()=> toggleSidebar() : null;
+    let location = useLocation();
+
+    const isGrocery=location.pathname ==="/groceries";
+    console.log(isGrocery);
+    
+    const{menu,toggleSidebar} =usePdata();
+    const isMobile = useMediaQuery({ maxWidth: 800 });
+    const s = isMobile ? ()=> toggleSidebar() : null;
+
+        console.log("hello");
 
     return(
         <>
@@ -52,14 +56,17 @@ export default function ResponsiveSideBar(){
                 <Logo/>
                 <MainNavbar/>
                 <ListItems/>
-                {/* <TopNavbar/> */}
             </div>
-            <MainQuotes/>
+            {!isGrocery?<MainQuotes/>:null}
             </>
                  :
                 <Main>
+                    {isGrocery?null:
+                    <>
                     <ListItems/>
                     <MainQuotes/>
+                    </>
+                    }    
                 </Main>
             }    
         </>

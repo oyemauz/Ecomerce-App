@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Data from '../../utils/db.appdata';
 import Button from "../common/Button";
+import { Link } from "react-router-dom";
 
 const UL=styled.ul`
 display:flex;
@@ -42,13 +43,13 @@ gap:1rem;
 function MainNavbar() {
     return (
             <UL>
-                <LI><ion-icon name="home"></ion-icon> {Data.MainNavbar.home}</LI>
-                <LI><ion-icon name="fast-food"></ion-icon>{Data.MainNavbar.grocery}</LI>
-                <LI><ion-icon name="nuclear"></ion-icon>{Data.MainNavbar.clean_household}</LI>
-                <LI><ion-icon name="megaphone"></ion-icon>{Data.MainNavbar.blogs}</LI>
-                <LI><ion-icon name="call"></ion-icon>{Data.MainNavbar.contact}</LI>
-                <LI><ion-icon name="information-circle"></ion-icon>{Data.MainNavbar.about}</LI>
-                <LI><ion-icon name="help-circle"></ion-icon>{Data.MainNavbar.help}</LI>
+                <LI><ion-icon name="home"></ion-icon> <Link to={"/"}>{Data.MainNavbar.home}</Link> </LI>
+                <LI><ion-icon name="fast-food"></ion-icon><Link to="/groceries">{Data.MainNavbar.grocery}</Link></LI>
+                <LI><ion-icon name="nuclear"></ion-icon><Link to="/clean-house">{Data.MainNavbar.clean_household}</Link></LI>
+                <LI><ion-icon name="megaphone"></ion-icon><Link to="/blogs">{Data.MainNavbar.blogs}</Link></LI>
+                <LI><ion-icon name="call"></ion-icon><Link to="/contact">{Data.MainNavbar.contact}</Link></LI>
+                <LI><ion-icon name="information-circle"></ion-icon><Link to="/about">{Data.MainNavbar.about}</Link></LI>
+                <LI><ion-icon name="help-circle"></ion-icon><Link to="/help">{Data.MainNavbar.help}</Link></LI>
                 <LI><Button color="white" size={window.innerWidth > 768 ? 'large' : 'medium'}>{Data.MainNavbar.register}</Button></LI>
             </UL>
     )

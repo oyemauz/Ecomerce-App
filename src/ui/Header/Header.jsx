@@ -6,9 +6,8 @@ import  usePdata  from "../../ThemeContext/usePData";
 
 function Header() {
     const s=usePdata();
-    console.log("header-> ",s.sidebar);
     return (
-        <header>
+        <header style={{paddingBottom:"3rem"}}>
             {s.sidebar || <TopNavbar/>}
             <HeaderWishListCart/>
            {s.sidebar ||  <MainNavbar/> }

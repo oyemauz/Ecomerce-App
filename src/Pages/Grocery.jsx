@@ -1,8 +1,17 @@
+import styled from 'styled-components';
+import Categories from '../ui/Categories/Categories';
+import ResponsiveSideBar from '../Styles/ResponsiveSideBar';
+
+const Items=styled.div`
+// padding-top: 2.4rem;
+`;
+
 function Grocery() {
     return (
-        <div>
-            <h1>Grocery</h1>
-        </div>
+        <Items>
+            <ResponsiveSideBar/>
+            <Categories/>
+        </Items>
     )
 }
 

@@ -1,12 +1,13 @@
 import { useState, createContext } from 'react';
 import PropTypes from 'prop-types'
 
-// Create a context
-const ThemeContext = createContext();
+const ThemeContext = createContext(null);
 
 const ThemeProvider = ({ children }) => {
   const [sidebar, setSidebar] = useState(false);
   const[menu,setmenu]=useState(false);
+
+ 
 
   function toggleSidebar(){
     setSidebar(true);
@@ -20,7 +21,7 @@ const ThemeProvider = ({ children }) => {
     setSidebar,
     toggleSidebar,
     menu,
-    toggleMenu
+    toggleMenu,
 }
 
   return (

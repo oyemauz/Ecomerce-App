@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom"
+
 function Logo() {
     return (
-        <img src="../../public/app_logo_img-removebg.png" alt="JCart"/>
+
+        <Link to="/"><img style={{cursor:"pointer"}} src="../../public/app_logo_img-removebg.png" alt="JCart"/></Link>
     )
 }
 

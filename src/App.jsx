@@ -1,19 +1,19 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
 import AppLayout from "./Pages/AppLayout";
 import Grocery from "./Pages/Grocery";
 import Clean_HouseHold from "./Pages/Clean_HouseHold";
-import Blogs from "./Pages/Blogs";
+import Blog from "./Pages/Blogs/Blog";
 import Contact from "./Pages/Contact";
 import About from "./Pages/About";
 import Help from "./Pages/Help";
 import ErrorPage from "./ui/common/ErrorPage";
-import Header from "./ui/Header/Header";
+import Home from "./ui/common/Home";
 import { ThemeProvider } from 'styled-components';
-// import ThemeProvider as ThemeProviderContext from "";
-import {ThemeProvider as ThemeProviderContext} from './ThemeContext/ContextProvider';
+import { ThemeProvider as ThemeProviderContext} from './ThemeContext/ContextProvider';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
 const theme = {
   breakpoints: {
     sm: '576px',
@@ -26,50 +26,46 @@ const theme = {
 const router = createBrowserRouter([
   {
     path: "/",
-    errorElement:<ErrorPage/>,
-    children: [
+    element: <AppLayout />,
+    errorElement: ErrorPage,
+    children: 
+    [
       {
         path: "/",
-        element: <AppLayout />,
+        element: <Home />,
       },
       {
-        path: "/grocery",
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },{
+        path: "blogs",
+        element: <Blog />,
+      },{
+        path: "clean-house",
+        element: <Clean_HouseHold />,
+      },{
+        path: "groceries",
         element: <Grocery />,
-      },
-      {
-        path: "/clean-housebold",
-        element:<Clean_HouseHold/>
-      },
-      {
-        path: "/blogs",
-        element:<Blogs/>
-      },
-      {
-        path: "/contact",
-        element:<Contact/>
-      },
-      {
-        path: "/about",
-        element:<About/>
-      },
-      {
-        path: "/help",
-        element:<Help/>
+      },{
+        path: "help",
+        element: <Help />,
       },
     ],
   },
 ]);
+
 function App() {
 
   return (
-    <ThemeProviderContext>
-      <ThemeProvider theme={theme} >
-      <div className="app">
-      <Header/>
-      <RouterProvider router={router}/> 
-      </div>
-      </ThemeProvider>
-    </ThemeProviderContext>
+     <ThemeProviderContext>
+        <ThemeProvider theme={theme} >
+          <RouterProvider router={router}/>
+       </ThemeProvider>
+     </ThemeProviderContext>
   )
   
 }

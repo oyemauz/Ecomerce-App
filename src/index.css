@@ -17,8 +17,7 @@
 
   .app{
     background-color: var(--color-slate-100);
-    /* height: calc(100vh - 2rem); */
-  }
+ }
 
   .flex{
     display: flex;

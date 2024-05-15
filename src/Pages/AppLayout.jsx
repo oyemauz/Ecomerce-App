@@ -1,9 +1,7 @@
 import styled from "styled-components"
-// import  usePdata  from "../ThemeContext/usePData";
-import Categories from "../ui/Categories/Categories";
-import ResponsiveSideBar from "../Styles/ResponsiveSideBar";
 import Footer from '../ui/common/Footer';
-// import PropTypes from 'prop-types';
+import Header from "../ui/Header/Header";
+import { Outlet } from "react-router-dom";
 
 
 const Section=styled.section`
@@ -24,21 +22,17 @@ display: block;
 
 
 function AppLayout() {
-    // const {sidebar,setSidebar}=usePdata();
       
     return (
-        <Section>
-            <ResponsiveSideBar/>
-            <Categories/>
-            <Footer/>
-        </Section>
+        <div className="app">
+            <Section>
+                <Header/>
+                <Outlet/>
+                <Footer/>
+            </Section>
+        </div>
     )
 }
-
-
-// AppLayout.propTypes = {
-//     sidebar: PropTypes.bool, // Example prop validation for a boolean prop
-//   };
 
 export default AppLayout
 
