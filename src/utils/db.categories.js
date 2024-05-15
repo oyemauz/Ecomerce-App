@@ -11,7 +11,7 @@ const Categories={
             weight:"1kg",
             isavailable:"In stock",
             price:"INR 220.00",
-            img:"src\\images\\Categories\\lemon.png",
+            img:"src\\images\\lemon.png",
             sub_categories:{},
 
         },
@@ -21,7 +21,7 @@ const Categories={
             weight:"1kg",
             isavailable:"In stock",
             price:"INR 250.00",
-            img:"src\\images\\Categories\\apple.png",
+            img:"src\\images\\apple.png",
             
             sub_categories:{},
         },
@@ -31,7 +31,7 @@ const Categories={
             weight:"1kg",
             isavailable:"In stock",
             price:"INR 180.00",
-            img:"src\\images\\Categories\\mango.png",
+            img:"src\\images\\mango.png",
 
             sub_categories:{},
         },
@@ -41,7 +41,7 @@ const Categories={
             weight:"1kg",
             isavailable:"In stock",
             price:"INR 80.00",
-            img:"src\\images\\Categories\\orange.png",
+            img:"src\\images\\orange.png",
 
             sub_categories:{},
         },
@@ -55,7 +55,7 @@ const Categories={
             weight:"1kg",
             isavailable:"In stock",
             price:"INR 80.00",
-            img:"src\\images\\Categories\\carrot.png",
+            img:"src\\images\\carrot.png",
 
             sub_categories:{},
         },
@@ -65,7 +65,7 @@ const Categories={
             weight:"1kg",
             isavailable:"In stock",
             price:"INR 80.00",
-            img:"src\\images\\Categories\\tomato.png",
+            img:"src\\images\\tomato.png",
 
             sub_categories:{},
         },
@@ -82,7 +82,7 @@ const Categories={
                     weight:"1 Liter",
                     price:"INR 120.00",
                     isavailable:"In stock",
-                    img:"src\\images\\Categories\\harpic_fresh.png",
+                    img:"src\\images\\harpic_fresh.png",
 
                 },
 
@@ -91,7 +91,7 @@ const Categories={
                     weight:"1 Liter",
                     price:"INR 90.00",
                     isavailable:"In stock",
-                    img:"src\\images\\Categories\\harpic_original.png",
+                    img:"src\\images\\harpic_original.png",
                 },
             }
         },
