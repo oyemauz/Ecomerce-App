@@ -44,12 +44,12 @@ function MainNavbar() {
     return (
             <UL>
                 <LI><ion-icon name="home"></ion-icon> <Link to={"/"}>{Data.MainNavbar.home}</Link> </LI>
-                <LI><ion-icon name="fast-food"></ion-icon><Link to="/groceries">{Data.MainNavbar.grocery}</Link></LI>
-                <LI><ion-icon name="nuclear"></ion-icon><Link to="/clean-house">{Data.MainNavbar.clean_household}</Link></LI>
-                <LI><ion-icon name="megaphone"></ion-icon><Link to="/blogs">{Data.MainNavbar.blogs}</Link></LI>
-                <LI><ion-icon name="call"></ion-icon><Link to="/contact">{Data.MainNavbar.contact}</Link></LI>
-                <LI><ion-icon name="information-circle"></ion-icon><Link to="/about">{Data.MainNavbar.about}</Link></LI>
-                <LI><ion-icon name="help-circle"></ion-icon><Link to="/help">{Data.MainNavbar.help}</Link></LI>
+                <LI><ion-icon name="fast-food"></ion-icon><Link to="/app/groceries">{Data.MainNavbar.grocery}</Link></LI>
+                <LI><ion-icon name="nuclear"></ion-icon><Link to="/app/clean-house">{Data.MainNavbar.clean_household}</Link></LI>
+                <LI><ion-icon name="megaphone"></ion-icon><Link to="/app/blogs">{Data.MainNavbar.blogs}</Link></LI>
+                <LI><ion-icon name="call"></ion-icon><Link to="/app/contact">{Data.MainNavbar.contact}</Link></LI>
+                <LI><ion-icon name="information-circle"></ion-icon><Link to="/app/about">{Data.MainNavbar.about}</Link></LI>
+                <LI><ion-icon name="help-circle"></ion-icon><Link to="/app/help">{Data.MainNavbar.help}</Link></LI>
                 <LI><Button color="white" size={window.innerWidth > 768 ? 'large' : 'medium'}>{Data.MainNavbar.register}</Button></LI>
             </UL>
     )

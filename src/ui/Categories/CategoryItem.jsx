@@ -65,15 +65,16 @@ CategoryItem.propTypes = {
 }
 
 function CategoryItem({item}) {
+    // console.log(item)
     return (
         <Div>
-            <Img src={item.img} alt="Apple"/>
-            <ItemName>{item.name} {item.weight}</ItemName>
-            <Stock>{item.isavailable}</Stock>
+            <Img src={item.imageUrl} alt={item.name}/>
+            <ItemName>{item.name} {item.quantity}</ItemName>
+            <Stock>In {item.status}</Stock>
 
             <StarRating>
                 <Stars/>
-                <Price style={{}}>{item.price}</Price>
+                <Price style={{}}>{item.price} {item.unitPrice}</Price>
             </StarRating>
 
             <ItemIcons className="icons">

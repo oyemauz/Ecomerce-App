@@ -40,13 +40,13 @@ export default function ResponsiveSideBar(){
     let location = useLocation();
 
     const isGrocery=location.pathname ==="/groceries";
-    console.log(isGrocery);
+    // console.log(isGrocery);
     
     const{menu,toggleSidebar} =usePdata();
     const isMobile = useMediaQuery({ maxWidth: 800 });
     const s = isMobile ? ()=> toggleSidebar() : null;
 
-        console.log("hello");
+        // console.log("hello");
 
     return(
         <>

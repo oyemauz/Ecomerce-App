@@ -3,7 +3,7 @@ import Categories from '../ui/Categories/Categories';
 import ResponsiveSideBar from '../Styles/ResponsiveSideBar';
 
 const Items=styled.div`
-// padding-top: 2.4rem;
+//  padding-top: 2.4rem;
 `;
 
 function Grocery() {

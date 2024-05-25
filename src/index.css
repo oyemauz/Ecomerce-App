@@ -300,10 +300,45 @@ left:-250px;
     color:rgba(147,147,147,1);
   }
 
+  form{
+    width:30rem;
+  }
+
 }
 
 @media screen and (max-width:400px){
   .hideWishlist{
     display: none;
    }
+   form{
+    width:20rem;
+   }
+}
+
+
+
+/* Dashboard */
+
+.dashboard  ul li ion-icon{
+  font-size: 1.6rem;
+}
+
+.dashboard ul li:hover ion-icon {
+  color: var(--color-lime-500);
+}
+
+.dashboard ul li.active {
+  background-color: var(--color-slate-100);
+}
+
+
+dashboard ul li a.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-slate-100);
+  z-index: -1;
 }
