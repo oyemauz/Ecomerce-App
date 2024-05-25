@@ -6,9 +6,9 @@ const SideBar=styled.div`
 display:flex;
 flex-direction:column;
 align-items:center;
-padding:3.4rem 1.4rem;
+padding:2.4rem 1.4rem 0 1.4rem;
 font-size:1.2rem;
-
+margin:0;
 `;
 
 const Img=styled.img`
@@ -20,7 +20,7 @@ const UL=styled.ul`
 display:flex;
 align-items:center;
 flex-direction:column;
-gap:2.4rem;
+gap:1.4rem;
 width:100%;
 `;
 

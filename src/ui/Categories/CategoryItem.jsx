@@ -65,7 +65,7 @@ CategoryItem.propTypes = {
 }
 
 function CategoryItem({item}) {
-    // console.log(item)
+
     return (
         <Div>
             <Img src={item.imageUrl} alt={item.name}/>

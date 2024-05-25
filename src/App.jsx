@@ -22,6 +22,7 @@ import Orders from './DashBoard/Features/Orders/Orders';
 import Products from './DashBoard/Features/Products/Products';
 import Users from './DashBoard/Components/Users';
 import Setting from './DashBoard/Components/Setting';
+import Profile from './DashBoard/Components/Profile';
 
 const theme = {
   breakpoints: {
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
     {
       path:'products',
       element:<Products/>
+    },
+    {
+      path:'profile',
+      element:<Profile/>
     },
     ]
   },

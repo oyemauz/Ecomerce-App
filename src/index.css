@@ -342,3 +342,48 @@ dashboard ul li a.active::before {
   background-color: var(--color-slate-100);
   z-index: -1;
 }
+
+/* Profile Section */
+
+.profile ion-icon{
+  font-size: 2.2rem;
+  color:var(--color-lime-500);
+}
+
+.profile .profile_image{
+  display: flex;
+  align-items: center;
+  background-color: var(--color-slate-100);
+  border-radius: 100%;
+}
+
+.profile .profile_image ion-icon{
+  color: var(--color-grey-500);
+  font-size: 2.6rem;
+  /* height: calc(100vh); */
+}
+
+/* Table Items */
+
+.product_row{
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 1fr 1fr 1.4fr;
+  column-gap: 2.4rem;
+  -webkit-box-align: center;
+  border-bottom: 1px solid var(--color-slate-200);
+  margin-bottom: .2rem;
+  font-size:1.2rem;
+  letter-spacing: 1.2px;
+  align-items: center;
+  transition: none 0s ease 0s;
+}
+
+.product_row img{
+    display: block;
+    width: 6.4rem;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: center center;
+    transform: scale(1.5) translateX(7px);
+}
+
