@@ -76,7 +76,7 @@ export default function AddProduct({setnewProduct}) {
 
     const {
         register,
-        handleSubmit,
+        handleSubmit, 
         // watch,
         // formState: { errors },
       } = useForm();

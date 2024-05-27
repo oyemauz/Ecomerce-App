@@ -367,7 +367,7 @@ dashboard ul li a.active::before {
 
 .product_row{
   display: grid;
-  grid-template-columns: 1.2fr 1.2fr 1fr 1fr 1.4fr;
+  grid-template-columns: 1.4fr 1.2fr 1fr 1fr 1.4fr .3fr;
   column-gap: 2.4rem;
   -webkit-box-align: center;
   border-bottom: 1px solid var(--color-slate-200);
@@ -387,3 +387,32 @@ dashboard ul li a.active::before {
     transform: scale(1.5) translateX(7px);
 }
 
+.product_dropdown svg{
+  margin-right: 1rem;
+color: var(--color-grey-500);
+cursor: pointer;
+padding: .2rem .3rem;
+}
+
+.product_dropdown svg:hover{
+background-color: var(--color-slate-100);
+}
+
+/* Drop Down */
+
+.drop_down div{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.drop_down div:hover {
+text-decoration: underline;
+/* color: var(--color-lime-500); */
+}
+.drop_down ion-icon{
+font-size: 1.6rem;
+}
+.drop_down div:hover ion-icon{
+  color: var(--color-lime-500);
+}

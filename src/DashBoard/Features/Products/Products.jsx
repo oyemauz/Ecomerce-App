@@ -6,6 +6,7 @@ import { getProducts } from "../../../Api/getProductsDetails";
 import ProductsList from "./ProductsList.";
 import { useEffect, useState } from "react";
 import AddProduct from "./AddProduct";
+import PropTypes from "prop-types";
 
 const Product=styled.div`
 padding:2.4rem;
@@ -56,7 +57,7 @@ export default function Products() {
   const [isNewProduct,setnewProduct]=useState(false);
   const { data, isLoading, isError,error } = useQuery({queryKey:['Products'],queryFn:getProducts});
 
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     if (isNewProduct) {
@@ -77,27 +78,39 @@ export default function Products() {
   return (
     <>
       {
-        isNewProduct ? <AddProduct setnewProduct={setnewProduct} isNewProduct={isNewProduct} />: 
-        <>
-          <Product>
-          <h3>All Products</h3>  
-        </Product>
-          <DIV>
-            <Header className="product_row">
-              <div></div>
-              <div>name</div>
-              <div>price</div>
-              <div>status</div>
-              <div>quantity</div>
-            </Header>
-          <Section>
-          {data.map((item,i)=><ProductsList key={i} item={item} />)}
-          </Section>
-          <ProductBtn onClick={()=>setnewProduct(!isNewProduct)}>Add new Products</ProductBtn>
-          </DIV>
-        </>
+        isNewProduct ? <AddProduct setnewProduct={setnewProduct} isNewProduct={isNewProduct} />:
+        <ProductTable setnewProduct={setnewProduct} data={data} isNewProduct={isNewProduct}/>
       }
     </>
   ) 
 }
 
+
+ProductTable.propTypes = {
+  setnewProduct: PropTypes.any,
+  isNewProduct:PropTypes.any,
+  data:PropTypes.any,
+}
+
+function ProductTable({setnewProduct,isNewProduct,data}){
+  return(  
+  <>
+    <Product>
+    <h3>All Products</h3>  
+   </Product>
+    <DIV>
+        <Header className="product_row">
+          <div></div>
+          <div>name</div>
+          <div>price</div>
+          <div>status</div>
+          <div>quantity</div>
+        </Header>
+      <Section>
+      {data.map((item,i)=><ProductsList key={i} item={item} />)}
+      </Section>
+      <ProductBtn onClick={()=>setnewProduct(!isNewProduct)}>Add new Products</ProductBtn>
+    </DIV>
+  </>
+  );
+}
