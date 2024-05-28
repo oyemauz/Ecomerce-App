@@ -2,13 +2,13 @@ import styled from "styled-components"
 import { useQuery } from "@tanstack/react-query";
 import { Spinner } from "flowbite-react";
 import ErrorPage from "../../../ui/common/ErrorPage";
-import { getProducts } from "../../../Api/getProductsDetails";
+import { getProducts } from "../../../api/getProductsDetails";
 import ProductsList from "./ProductsList.";
 import { useEffect, useState } from "react";
 import AddProduct from "./AddProduct";
 import PropTypes from "prop-types";
 
-const Product=styled.div`
+const Product = styled.div`
 padding:2.4rem;
 border-radius:4px;
 h3{
@@ -17,7 +17,7 @@ h3{
 }
 `;
 
-const Header=styled.header`
+const Header = styled.header`
 padding: 1.6rem 0;
 // background-color: var(--color-slate-100);
 border-bottom:1px solid var(--color-slate-200);
@@ -27,17 +27,17 @@ font-weight: 600;
 color: var(--color-grey-600);
 `;
 
-const Section=styled.section`
+const Section = styled.section`
 margin:0.4rem 0px;
 background-color:#fff;
 `;
 
-const DIV=styled.div`
+const DIV = styled.div`
 border:1px solid var(--color-slate-200);
 margin:1rem 2.4rem;
 `;
 
-const ProductBtn=styled.button`
+const ProductBtn = styled.button`
     padding: 1.4rem;
     margin-top: 1.4rem;
     border: none;
@@ -54,8 +54,8 @@ const ProductBtn=styled.button`
 
 export default function Products() {
 
-  const [isNewProduct,setnewProduct]=useState(false);
-  const { data, isLoading, isError,error } = useQuery({queryKey:['Products'],queryFn:getProducts});
+  const [isNewProduct, setnewProduct] = useState(false);
+  const { data, isLoading, isError, error } = useQuery({ queryKey: ['Products'], queryFn: getProducts });
 
   // console.log(data);
 
@@ -72,33 +72,33 @@ export default function Products() {
     };
   }, [isNewProduct]);
 
-  if(isLoading) return <Spinner/>
-  if(isError) return <ErrorPage error={error} />
+  if (isLoading) return <Spinner />
+  if (isError) return <ErrorPage error={error} />
 
   return (
     <>
       {
-        isNewProduct ? <AddProduct setnewProduct={setnewProduct} isNewProduct={isNewProduct} />:
-        <ProductTable setnewProduct={setnewProduct} data={data} isNewProduct={isNewProduct}/>
+        isNewProduct ? <AddProduct setnewProduct={setnewProduct} isNewProduct={isNewProduct} /> :
+          <ProductTable setnewProduct={setnewProduct} data={data} isNewProduct={isNewProduct} />
       }
     </>
-  ) 
+  )
 }
 
 
 ProductTable.propTypes = {
   setnewProduct: PropTypes.any,
-  isNewProduct:PropTypes.any,
-  data:PropTypes.any,
+  isNewProduct: PropTypes.any,
+  data: PropTypes.any,
 }
 
-function ProductTable({setnewProduct,isNewProduct,data}){
-  return(  
-  <>
-    <Product>
-    <h3>All Products</h3>  
-   </Product>
-    <DIV>
+function ProductTable({ setnewProduct, isNewProduct, data }) {
+  return (
+    <>
+      <Product>
+        <h3>All Products</h3>
+      </Product>
+      <DIV>
         <Header className="product_row">
           <div></div>
           <div>name</div>
@@ -106,11 +106,11 @@ function ProductTable({setnewProduct,isNewProduct,data}){
           <div>status</div>
           <div>quantity</div>
         </Header>
-      <Section>
-      {data.map((item,i)=><ProductsList key={i} item={item} />)}
-      </Section>
-      <ProductBtn onClick={()=>setnewProduct(!isNewProduct)}>Add new Products</ProductBtn>
-    </DIV>
-  </>
+        <Section>
+          {data.map((item, i) => <ProductsList key={i} item={item} />)}
+        </Section>
+        <ProductBtn onClick={() => setnewProduct(!isNewProduct)}>Add new Products</ProductBtn>
+      </DIV>
+    </>
   );
 }

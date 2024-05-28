@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form"
-import {  CreateNewProduct } from '../../../Api/getProductsDetails';
+import { CreateNewProduct } from '../../../api/getProductsDetails';
 // CreateNewProduct
 
 const NewProduct = styled.div`
@@ -69,42 +69,49 @@ const Button = styled.button`
 `;
 
 AddProduct.propTypes = {
-    setnewProduct:PropTypes.any
+  setnewProduct: PropTypes.any
 }
 
-export default function AddProduct({setnewProduct}) {
+export default function AddProduct({ setnewProduct }) {
 
-    const {
-        register,
-        handleSubmit, 
-        // watch,
-        // formState: { errors },
-      } = useForm();
+  const {
+    register,
+    handleSubmit,
+    // watch,
+    // formState: { errors },
+  } = useForm({
+    defaultValues: {
+      status: 'available'
+    }
+  });
 
-      const onSubmit = (data) => CreateNewProduct(data);
+  const onSubmit = (data) => {
+    CreateNewProduct(data);
+    setnewProduct(false);
+  };
 
   return (
     <NewProduct>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Label>Product Name</Label>
-        <Input type="text" name="productName" {...register("name", { required: true})} />
+        <Input type="text" name="productName" {...register("name", { required: true })} />
 
         <Label>Product Price</Label>
-        <Input type="text" name="productPrice" {...register("price",{required:true})} />
+        <Input type="text" name="productPrice" {...register("price", { required: true })} />
 
         <Label>Product Quantity</Label>
-        <Input type="text" name="productQuantity" {...register("quantity",{required:true})} />
+        <Input type="text" name="productQuantity" {...register("quantity", { required: true })} />
 
         <Label>Product Status</Label>
-        <select {...register("status")}>
-        <option value="available">Available</option>
-        <option value="notavailable">Not Available</option>
-      </select>
+        <select {...register("status")} >
+          <option value="available">Available</option>
+          <option value="notavailable">Not Available</option>
+        </select>
         <Label>Category Image</Label>
-        <Input type="file" name="categoryImage" accept="image/png, image/jpeg, image/jpg" {...register("imageUrl",{required:true})} />
+        <Input type="file" name="categoryImage" accept="image/png, image/jpeg, image/jpg" {...register("imageUrl", { required: true })} />
 
         <div className='btn'>
-          <Button type="button" onClick={()=>setnewProduct(false)}>Cancel</Button>
+          <Button type="button" onClick={() => setnewProduct(false)}>Cancel</Button>
           <Button type="submit">Submit</Button>
         </div>
       </Form>

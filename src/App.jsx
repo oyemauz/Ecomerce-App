@@ -9,20 +9,20 @@ import Help from "./Pages/Help";
 import ErrorPage from "./ui/common/ErrorPage";
 import Home from "./ui/common/Home";
 import { ThemeProvider } from 'styled-components';
-import { ThemeProvider as ThemeProviderContext} from './ThemeContext/ContextProvider';
+import { ThemeProvider as ThemeProviderContext } from './ThemeContext/ContextProvider';
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
 import Login from "./Pages/Login";
-import DashBoard from './DashBoard/DashBoard';
-import AdminHomePage from './DashBoard/Components/Home';
-import Orders from './DashBoard/Features/Orders/Orders';
-import Products from './DashBoard/Features/Products/Products';
-import Users from './DashBoard/Components/Users';
-import Setting from './DashBoard/Components/Setting';
-import Profile from './DashBoard/Components/Profile';
+import DashBoard from './dashBoard/dashBoard';
+import AdminHomePage from './dashBoard/components/Home';
+import Orders from './dashBoard/features/Orders/Orders';
+import Products from './dashBoard/features/Products/Products';
+import Users from './dashBoard/components/Users';
+import Setting from './dashBoard/components/Setting';
+import Profile from './dashBoard/components/Profile';
 
 const theme = {
   breakpoints: {
@@ -35,40 +35,40 @@ const theme = {
 
 const router = createBrowserRouter([
   {
-    path: "/app", 
+    path: "/app",
     element: <AppLayout />,
     errorElement: ErrorPage,
-    children: 
-    [
-      {
-        path: "/app",
-        element: <Home />,
-      },
-      {
-        path: "contact",
-        element: <Contact />,
-      },
-      {
-        path: "about",
-        element: <About />,
-      },{
-        path: "blogs",
-        element: <Blog />,
-      },{
-        path: "clean-house",
-        element: <Clean_HouseHold />,
-      },{
-        path: "groceries",
-        element: <Grocery />,
-      },{
-        path: "help",
-        element: <Help />,
-      },
-    ],
+    children:
+      [
+        {
+          path: "/app",
+          element: <Home />,
+        },
+        {
+          path: "contact",
+          element: <Contact />,
+        },
+        {
+          path: "about",
+          element: <About />,
+        }, {
+          path: "blogs",
+          element: <Blog />,
+        }, {
+          path: "clean-house",
+          element: <Clean_HouseHold />,
+        }, {
+          path: "groceries",
+          element: <Grocery />,
+        }, {
+          path: "help",
+          element: <Help />,
+        },
+      ],
   },
   {
     path: "/",
-    element: <Navigate to="/login"/>,
+    element: <Navigate to="/login" />,
   },
   {
     path: "/login",
@@ -76,45 +76,45 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashBoard/>,
-    children:[
-    {
-        path:'user',
-        element:<Users/>
-    },      
-    {
-          path:'setting',
-          element:<Setting/>
-    },
-    {
-      path:'/dashboard',
-      element:<AdminHomePage/>
-    },
-    {
-      path:'orders',
-      element:<Orders/>
-    },
-    {
-      path:'products',
-      element:<Products/>
-    },
-    {
-      path:'profile',
-      element:<Profile/>
-    },
+    element: <DashBoard />,
+    children: [
+      {
+        path: 'user',
+        element: <Users />
+      },
+      {
+        path: 'setting',
+        element: <Setting />
+      },
+      {
+        path: '/dashboard',
+        element: <AdminHomePage />
+      },
+      {
+        path: 'orders',
+        element: <Orders />
+      },
+      {
+        path: 'products',
+        element: <Products />
+      },
+      {
+        path: 'profile',
+        element: <Profile />
+      },
     ]
   },
 ]);
 
 function App() {
   return (
-     <ThemeProviderContext>
-        <ThemeProvider theme={theme} >
-          <RouterProvider router={router}/>
-       </ThemeProvider>
-     </ThemeProviderContext>
+    <ThemeProviderContext>
+      <ThemeProvider theme={theme} >
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </ThemeProviderContext>
   )
-  
+
 }
 
 export default App

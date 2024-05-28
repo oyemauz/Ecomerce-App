@@ -2,12 +2,12 @@
 import CategoryItem from "./CategoryItem"
 // import CategoriesData from '../../utils/db.categories';
 import styled from "styled-components";
-import { getProducts } from "../../Api/getProductsDetails";
+import { getProducts } from "../../api/getProductsDetails";
 import { useQuery } from "@tanstack/react-query";
 import ProductError from "../common/ProductError";
 import Loader from "../common/Loader";
 
-const Div=styled.div`
+const Div = styled.div`
 
 display: grid;
 grid-template-columns:repeat(4,1fr);
@@ -33,16 +33,16 @@ padding-top:2.4rem;
 
 function Categories() {
 
-    const { data, isLoading, isError,error } = useQuery({queryKey:['Products'],queryFn:getProducts});
+    const { data, isLoading, isError, error } = useQuery({ queryKey: ['Products'], queryFn: getProducts });
 
     console.log(isError);
-    if (isLoading) return <Loader/>;
-    if (isError) return  <ProductError error={error}/>;
+    if (isLoading) return <Loader />;
+    if (isError) return <ProductError error={error} />;
 
     return (
         <Div>
             {
-                data.map((item,i)=><CategoryItem key={i} item={item}/>)
+                data.map((item, i) => <CategoryItem key={i} item={item} />)
             }
         </Div>
     )

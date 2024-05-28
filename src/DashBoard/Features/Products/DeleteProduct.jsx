@@ -1,7 +1,9 @@
 import styled from "styled-components"
-import { DeleteProductDoc } from "../../../Api/getProductsDetails";
+import { DeleteProductDoc } from "@/api/getProductsDetails";
+import PropTypes from "prop-types";
 
-const DeleteDoc=styled.section`
+
+const DeleteDoc = styled.section`
 position: fixed;
 top: 50%;
 left: 50%;
@@ -15,14 +17,27 @@ border:6px;
 
 `;
 
-export default function DeleteProduct() {
+DeleteProduct.propTypes = {
+  itemId: PropTypes.any,
+  setdropdown: PropTypes.bool,
+  setdeleteProduct: PropTypes.bool
+}
+
+export default function DeleteProduct({ setdropdown, setdeleteProduct, itemId }) {
+
+  function deleteItem() {
+    DeleteProductDoc(itemId);
+    setdeleteProduct(false);
+    setdropdown(false);
+  }
+
   return (
     <DeleteDoc>
-        <h2> <ion-icon name="warning-outline"></ion-icon> Are you Sure You want to Delete Product ?</h2>
-        <div>
-            <button>Cancel</button>
-            <button onClick={()=>DeleteProductDoc}>Delete</button>
-        </div>
+      <h2> <ion-icon name="warning-outline"></ion-icon> Are you Sure You want to Delete Product ?</h2>
+      <div>
+        <button onClick={() => { setdeleteProduct(false); setdropdown(false) }}>Cancel</button>
+        <button onClick={deleteItem}>Delete</button>
+      </div>
     </DeleteDoc>
   )
 }
