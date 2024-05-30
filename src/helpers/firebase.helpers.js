@@ -15,3 +15,7 @@ export const addDocument = async (path, payload) => {
     return setDoc(docRef, data);
 }
 
+/**  
+ * Function use to update document in firebase
+ * @param {}
+*/

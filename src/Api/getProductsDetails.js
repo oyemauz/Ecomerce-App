@@ -1,4 +1,4 @@
-import { collection, getDocs, doc, setDoc, deleteDoc } from "firebase/firestore";
+import { collection, getDoc, getDocs, doc, setDoc, deleteDoc, updateDoc } from "firebase/firestore";
 import { db } from '../config/firebase.config';
 import { getStorage, getDownloadURL, uploadBytes } from "firebase/storage";
 import { storageRef as sRef } from "../config/firebaseStorage.config";
@@ -18,10 +18,17 @@ export async function getProducts() {
   }
 }
 
-// generate Random Id
-// function generateRandomId() {
-//   return 'id-' + Math.random().toString(36).substr(2, 9) + '-' + Date.now();
-// }
+export async function getProductID(id) {
+  const productsCol = doc(db, "Products", id);
+  const docSnap = await getDoc(productsCol);
+
+  if (docSnap.exists()) {
+    return docSnap.data();
+  } else {
+    // docSnap.data() will be undefined in this case
+    console.log("No such document!");
+  }
+}
 
 // add new product into database.
 export async function CreateNewProduct(items) {
@@ -38,8 +45,35 @@ export async function CreateNewProduct(items) {
     unitPrice: DB_COLLECTIONS.UNIT_PRICE,
     imageUrl: url,
     quantity: Number(quantity),
+    status: items.status
   });
 }
+
+export async function updateProduct(items) {
+  console.log(items.id)
+  if (!items || !items.id) {
+    console.error("Invalid items object:", items);
+    throw new Error("Invalid items object");
+  }
+
+  const productRef = doc(db, "Products", items.id);
+
+  const url = await uploadImageOnFireStore(items.imageUrl);
+  console.log("image url-> ", url)
+  try {
+    await updateDoc(productRef, {
+      ...items,
+      imageUrl: url
+    });
+
+    console.log("Product updated successfully");
+    return { success: true, message: "Product updated successfully" };
+  } catch (error) {
+    console.error("Error updating product:", error);
+    return { success: false, message: "Error updating product", error };
+  }
+}
+
 
 // upload image into firebase storage
 async function uploadImageOnFireStore(file) {

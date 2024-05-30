@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { getProducts } from "../../api/getProductsDetails";
 import { useQuery } from "@tanstack/react-query";
 import ProductError from "../common/ProductError";
-import Loader from "../common/Loader";
+import { Bars } from "react-loader-spinner";
 
 const Div = styled.div`
 
@@ -35,8 +35,18 @@ function Categories() {
 
     const { data, isLoading, isError, error } = useQuery({ queryKey: ['Products'], queryFn: getProducts });
 
-    console.log(isError);
-    if (isLoading) return <Loader />;
+    if (isLoading) return <div className="cat_loader">
+        <Bars
+            height="50"
+            width="50"
+            color="#4fa94d"
+            ariaLabel="bars-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+        />
+    </div>
+
     if (isError) return <ProductError error={error} />;
 
     return (

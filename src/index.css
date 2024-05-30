@@ -416,3 +416,17 @@ font-size: 1.6rem;
 .drop_down div:hover ion-icon{
   color: var(--color-lime-500);
 }
+
+/* Design Loader  */
+
+.loader{
+  position: absolute;
+  top:30%;
+  left:50%;
+}
+
+.cat_loader{
+ position: relative;
+ top: 5%;
+ left: 50%; 
+}

@@ -77,6 +77,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashBoard />,
+    ErrorBoundary: ErrorPage,
     children: [
       {
         path: 'user',

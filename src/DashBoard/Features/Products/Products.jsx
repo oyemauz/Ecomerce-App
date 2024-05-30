@@ -1,12 +1,13 @@
 import styled from "styled-components"
 import { useQuery } from "@tanstack/react-query";
-import { Spinner } from "flowbite-react";
+// import { Spinner } from "flowbite-react";
 import ErrorPage from "../../../ui/common/ErrorPage";
 import { getProducts } from "../../../api/getProductsDetails";
 import ProductsList from "./ProductsList.";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AddProduct from "./AddProduct";
 import PropTypes from "prop-types";
+import { Bars } from "react-loader-spinner";
 
 const Product = styled.div`
 padding:2.4rem;
@@ -59,20 +60,19 @@ export default function Products() {
 
   // console.log(data);
 
-  useEffect(() => {
-    if (isNewProduct) {
-      document.body.classList.add('blur');
-    } else {
-      document.body.classList.remove('blur');
-    }
+  // if (isLoading) return <Spinner size="sm" />
+  if (isLoading) return <div className="loader"
+  ><Bars
+      height="60"
+      width="70"
+      color="#84cc16"
+      ariaLabel="bars-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+      visible={true}
+    /></div>
 
-    // Clean up on component unmount or when isNewProduct changes
-    return () => {
-      document.body.classList.remove('blur');
-    };
-  }, [isNewProduct]);
-
-  if (isLoading) return <Spinner />
+  console.log(isError);
   if (isError) return <ErrorPage error={error} />
 
   return (

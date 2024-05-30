@@ -16,8 +16,8 @@ cursor:pointer;
 `;
 
 export default function ProductsList({ item }) {
-  console.log(item);
   const [isdropdown, setdropdown] = useState(false);
+
   return (
 
     <div className="product_row" style={{ height: "6.4rem" }}>

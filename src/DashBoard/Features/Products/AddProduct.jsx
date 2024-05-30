@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form"
-import { CreateNewProduct } from '../../../api/getProductsDetails';
+import { CreateNewProduct, getProductID, updateProduct } from '../../../api/getProductsDetails';
+// import { useEffect } from 'react';
 // CreateNewProduct
 
 const NewProduct = styled.div`
@@ -69,26 +70,65 @@ const Button = styled.button`
 `;
 
 AddProduct.propTypes = {
-  setnewProduct: PropTypes.any
+  setnewProduct: PropTypes.any,
+  id: PropTypes.any,
+  setEdit: PropTypes.any,
+  isEdit: PropTypes.any
 }
 
-export default function AddProduct({ setnewProduct }) {
+export default function AddProduct({ isEdit, setnewProduct, id, setEdit }) {
 
+  //, price, quantity, imageUrl, status
+
+  async function getProduct(itemId) {
+    const product = await getProductID(itemId);
+    return product;
+  }
+  console.log("id -> ", id)
   const {
     register,
     handleSubmit,
     // watch,
     // formState: { errors },
   } = useForm({
-    defaultValues: {
-      status: 'available'
-    }
+    defaultValues: { status: 'available' }
   });
 
-  const onSubmit = (data) => {
-    CreateNewProduct(data);
-    setnewProduct(false);
+  const onSubmit = async (data) => {
+    if (isEdit) {
+      try {
+        const product = await getProduct(id);
+        console.log("p ->", product);
+
+        if (product) {
+          const items = {
+            ...data,
+            id: product.id
+          };
+
+          const isSuccess = await updateProduct(items);
+          console.log(isSuccess);
+          setEdit(false);
+        } else {
+          console.error("Product not found");
+        }
+      } catch (error) {
+        console.error("Error during submission:", error);
+      }
+    } else {
+      CreateNewProduct(data);
+      setnewProduct(false);
+    }
   };
+
+  function handleCancel() {
+    if (isEdit) {
+      setEdit(false);
+    }
+    else {
+      setnewProduct(false);
+    }
+  }
 
   return (
     <NewProduct>
@@ -111,7 +151,7 @@ export default function AddProduct({ setnewProduct }) {
         <Input type="file" name="categoryImage" accept="image/png, image/jpeg, image/jpg" {...register("imageUrl", { required: true })} />
 
         <div className='btn'>
-          <Button type="button" onClick={() => setnewProduct(false)}>Cancel</Button>
+          <Button type="button" onClick={handleCancel}>Cancel</Button>
           <Button type="submit">Submit</Button>
         </div>
       </Form>

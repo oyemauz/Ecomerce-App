@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { DeleteProductDoc } from "@/api/getProductsDetails";
 import PropTypes from "prop-types";
-
+import Button from "@/ui/common/Button";
 
 const DeleteDoc = styled.section`
 position: fixed;
@@ -19,9 +19,31 @@ border:6px;
 
 DeleteProduct.propTypes = {
   itemId: PropTypes.any,
-  setdropdown: PropTypes.bool,
-  setdeleteProduct: PropTypes.bool
+  setdropdown: PropTypes.any,
+  setdeleteProduct: PropTypes.any
 }
+
+const DIV = styled.div`
+margin-top:1.8rem;
+display:flex;
+align-items:center;
+gap:1.4rem;
+
+.btn{
+  padding:.4rem 1.4rem;
+  border:none;
+  border-radius:5px;
+}
+
+.btn_cancel{
+  background-color:var(--color-slate-100);
+}
+
+.delete_btn{
+  color:#fff;
+}
+
+`;
 
 export default function DeleteProduct({ setdropdown, setdeleteProduct, itemId }) {
 
@@ -34,10 +56,10 @@ export default function DeleteProduct({ setdropdown, setdeleteProduct, itemId })
   return (
     <DeleteDoc>
       <h2> <ion-icon name="warning-outline"></ion-icon> Are you Sure You want to Delete Product ?</h2>
-      <div>
-        <button onClick={() => { setdeleteProduct(false); setdropdown(false) }}>Cancel</button>
-        <button onClick={deleteItem}>Delete</button>
-      </div>
+      <DIV>
+        <button className="btn btn_cancel" onClick={() => { setdeleteProduct(false); setdropdown(false) }}>Cancel</button>
+        <Button className="btn delete_btn" onClick={deleteItem}>Delete</Button>
+      </DIV>
     </DeleteDoc>
   )
 }
