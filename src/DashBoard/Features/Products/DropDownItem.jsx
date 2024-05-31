@@ -32,7 +32,7 @@ export default function DropDownItem({ setdropdown, itemId }) {
         <div onClick={() => setdeleteProduct(!isdeleteProduct)}> <ion-icon name="trash-outline"></ion-icon> Delete</div>
       </DropDown>
       {isdeleteProduct ? <DeleteProduct setdropdown={setdropdown} setdeleteProduct={setdeleteProduct} itemId={itemId} /> : ''}
-      {isEdit ? <AddProduct isEdit={isEdit} setEdit={setEdit} id={itemId} /> : ''}
+      {isEdit ? <AddProduct setdropdown={setdropdown} isEdit={isEdit} setEdit={setEdit} id={itemId} /> : ''}
     </>
   )
 }

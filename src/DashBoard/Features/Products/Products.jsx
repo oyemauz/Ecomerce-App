@@ -58,9 +58,6 @@ export default function Products() {
   const [isNewProduct, setnewProduct] = useState(false);
   const { data, isLoading, isError, error } = useQuery({ queryKey: ['Products'], queryFn: getProducts });
 
-  // console.log(data);
-
-  // if (isLoading) return <Spinner size="sm" />
   if (isLoading) return <div className="loader"
   ><Bars
       height="60"
@@ -72,7 +69,6 @@ export default function Products() {
       visible={true}
     /></div>
 
-  console.log(isError);
   if (isError) return <ErrorPage error={error} />
 
   return (

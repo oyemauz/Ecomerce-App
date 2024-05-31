@@ -2,9 +2,9 @@ import styled from "styled-components";
 import Button from "../ui/common/Button";
 import '../index.css';
 import { useState } from "react";
-import { isValidUser } from "../api/UserAuthentication";
+import { signInUser } from "@/api/UserAuthentication";
 import { useNavigate } from "react-router-dom";
-
+import { useEffect } from "react";
 
 const Form = styled.form`
 background-color:var(--color-slate-100);
@@ -59,7 +59,6 @@ background-color:#fff;
   font-size:1.2rem;
 }
 
-
 `;
 
 export default function Login() {
@@ -67,25 +66,28 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const isUser = isValidUser(email, password);
-  console.log(isUser);
-
-  function SubmitForm(e) {
+  let isUser;
+  async function SubmitForm(e) {
     e.preventDefault();
     if (!email || !password) return;
 
+    isUser = await signInUser(email, password);
+
     if (isUser) {
-      console.log(email, password);
-      navigate('/app')
+      navigate('/dashboard')
+      console.log(isUser)
     }
   }
 
-  // useEffect(
-  //   function () {
-  //     if (isUser) navigate("/app", { replace: true });
-  //   },
-  //   [isUser, navigate]
-  // );
+  useEffect(
+    function () {
+      if (isUser) navigate("/dashboard", { replace: true })
+      else {
+        navigate("/login")
+      }
+    },
+    [isUser, navigate]
+  );
 
   return (
     <Form onSubmit={SubmitForm}>

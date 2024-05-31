@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { logOutUser } from "@/api/UserAuthentication";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components"
 
 
-const NAV=styled.div`
+const NAV = styled.div`
     display: flex;
     justify-content: right;
     gap: 3.4rem;
@@ -12,12 +13,21 @@ const NAV=styled.div`
 `;
 
 function Nav() {
+  const navigate = useNavigate();
+  async function logout() {
+    const logOut = await logOutUser();
+    console.log(logOut);
+    // if (logOut) {
+    navigate("/login");
+    // }
+  }
+
   return (
     <NAV className="profile">
       <span className="profile_image"><ion-icon name="person-circle-outline"></ion-icon></span>
       <span>Name</span>
       <NavLink to="/dashboard/profile"><ion-icon name="person-outline"></ion-icon></NavLink>
-      <ion-icon name="log-out-outline"></ion-icon>
+      <div onClick={logout} style={{ cursor: "pointer" }}><ion-icon name="log-out-outline" ></ion-icon></div>
     </NAV>
   )
 }

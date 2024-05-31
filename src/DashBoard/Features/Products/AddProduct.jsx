@@ -73,10 +73,11 @@ AddProduct.propTypes = {
   setnewProduct: PropTypes.any,
   id: PropTypes.any,
   setEdit: PropTypes.any,
-  isEdit: PropTypes.any
+  isEdit: PropTypes.any,
+  setdropdown: PropTypes.any
 }
 
-export default function AddProduct({ isEdit, setnewProduct, id, setEdit }) {
+export default function AddProduct({ setdropdown, isEdit, setnewProduct, id, setEdit }) {
 
   //, price, quantity, imageUrl, status
 
@@ -119,6 +120,7 @@ export default function AddProduct({ isEdit, setnewProduct, id, setEdit }) {
       CreateNewProduct(data);
       setnewProduct(false);
     }
+    setdropdown(false);
   };
 
   function handleCancel() {
@@ -128,6 +130,7 @@ export default function AddProduct({ isEdit, setnewProduct, id, setEdit }) {
     else {
       setnewProduct(false);
     }
+    setdropdown(false);
   }
 
   return (
