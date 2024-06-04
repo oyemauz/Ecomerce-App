@@ -1,15 +1,27 @@
-import { collection, getDoc, getDocs, doc, setDoc, deleteDoc, updateDoc } from "firebase/firestore";
-import { db } from '../config/firebase.config';
+import {
+  collection,
+  getDoc,
+  getDocs,
+  doc,
+  setDoc,
+  deleteDoc,
+  updateDoc,
+} from "firebase/firestore";
+import { db } from "../config/firebase.config";
 import { getStorage, getDownloadURL, uploadBytes } from "firebase/storage";
 import { storageRef as sRef } from "../config/firebaseStorage.config";
-import { DB_COLLECTIONS } from "../constants/db.constants"
+import { DB_COLLECTIONS } from "../constants/db.constants";
+import toast from "react-hot-toast";
 
 // Export all products from database
 
 export async function getProducts() {
   const productsCol = collection(db, "Products");
   const productSnapshot = await getDocs(productsCol);
-  const productList = productSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+  const productList = productSnapshot.docs.map((doc) => ({
+    ...doc.data(),
+    id: doc.id,
+  }));
 
   if (productList.length > 0) {
     return productList;
@@ -26,13 +38,12 @@ export async function getProductID(id) {
     return docSnap.data();
   } else {
     // docSnap.data() will be undefined in this case
-    console.log("No such document!");
+    toast.error("No such document!");
   }
 }
 
 // add new product into database.
 export async function CreateNewProduct(items) {
-
   const { name, price, imageUrl, quantity } = items;
   const url = await uploadImageOnFireStore(imageUrl[0]);
   const colRef = collection(db, DB_COLLECTIONS.PRODUCTS);
@@ -45,12 +56,12 @@ export async function CreateNewProduct(items) {
     unitPrice: DB_COLLECTIONS.UNIT_PRICE,
     imageUrl: url,
     quantity: Number(quantity),
-    status: items.status
+    status: items.status,
   });
 }
 
 export async function updateProduct(items) {
-  console.log("items-> ", items)
+  console.log("items-> ", items);
   if (!items || !items.id) {
     console.error("Invalid items object:", items);
     throw new Error("Invalid items object");
@@ -59,11 +70,11 @@ export async function updateProduct(items) {
   const productRef = doc(db, "Products", items.id);
 
   const url = await uploadImageOnFireStore(items.imageUrl[0]);
-  console.log("image url-> ", url)
+  console.log("image url-> ", url);
   try {
     await updateDoc(productRef, {
       ...items,
-      imageUrl: url
+      imageUrl: url,
     });
 
     console.log("Product updated successfully");
@@ -73,7 +84,6 @@ export async function updateProduct(items) {
     return { success: false, message: "Error updating product", error };
   }
 }
-
 
 // upload image into firebase storage
 async function uploadImageOnFireStore(file) {
@@ -89,9 +99,7 @@ async function uploadImageOnFireStore(file) {
 }
 
 export async function DeleteProductDoc(id) {
-
   const res = await deleteDoc(doc(db, "Products", id));
   console.log(res);
   return null;
 }
-
