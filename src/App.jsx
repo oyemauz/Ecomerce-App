@@ -113,7 +113,6 @@ const protectedRoutes = [
   },
 ]
 
-
 function App() {
   const router = useMemo(() => {
     const accessToken = localStorage.getItem("x-auth-token");

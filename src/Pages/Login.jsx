@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Button from "../ui/common/Button";
 import '../index.css';
 import { useState } from "react";
-import { signInUser } from "@/api/UserAuthentication";
+import { signInUser } from "@/api/userAuthentication";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 

@@ -1,4 +1,4 @@
-import { logOutUser } from "@/api/UserAuthentication";
+import { logOutUser } from "@/api/userAuthentication";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components"
 

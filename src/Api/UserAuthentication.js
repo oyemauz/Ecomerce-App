@@ -17,11 +17,9 @@ export async function logOutUser() {
         const isSignOut = await signOut(auth);
         localStorage.removeItem("x-auth-token")
         return isSignOut;
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error.message);
     }
 }
 
 export { signInUser }
-
