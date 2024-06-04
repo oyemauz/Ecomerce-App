@@ -14,6 +14,7 @@ import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
+  useNavigate,
 } from "react-router-dom";
 import Login from "./Pages/Login";
 import DashBoard from './dashBoard/dashBoard';
@@ -23,6 +24,7 @@ import Products from './dashBoard/features/Products/Products';
 import Users from './dashBoard/components/Users';
 import Setting from './dashBoard/components/Setting';
 import Profile from './dashBoard/components/Profile';
+import { useMemo } from 'react';
 
 const theme = {
   breakpoints: {
@@ -33,47 +35,47 @@ const theme = {
   },
 };
 
-const router = createBrowserRouter([
-  {
-    path: "/app",
-    element: <AppLayout />,
-    errorElement: ErrorPage,
-    children:
-      [
-        {
-          path: "/app",
-          element: <Home />,
-        },
-        {
-          path: "contact",
-          element: <Contact />,
-        },
-        {
-          path: "about",
-          element: <About />,
-        }, {
-          path: "blogs",
-          element: <Blog />,
-        }, {
-          path: "clean-house",
-          element: <Clean_HouseHold />,
-        }, {
-          path: "groceries",
-          element: <Grocery />,
-        }, {
-          path: "help",
-          element: <Help />,
-        },
-      ],
-  },
-  {
-    path: "/",
-    element: <Navigate to="/login" />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
+const publicRoutes = [{
+  path: "/app",
+  element: <AppLayout />,
+  errorElement: ErrorPage,
+  children:
+    [
+      {
+        path: "/app",
+        element: <Home />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      }, {
+        path: "blogs",
+        element: <Blog />,
+      }, {
+        path: "clean-house",
+        element: <Clean_HouseHold />,
+      }, {
+        path: "groceries",
+        element: <Grocery />,
+      }, {
+        path: "help",
+        element: <Help />,
+      },
+    ],
+}, {
+  path: "/",
+  element: <Navigate to="/login" />,
+},
+{
+  path: "/login",
+  element: <Login />,
+}]
+
+const protectedRoutes = [
   {
     path: "/dashboard",
     element: <DashBoard />,
@@ -105,9 +107,18 @@ const router = createBrowserRouter([
       },
     ]
   },
-]);
+  {
+    path: "/",
+    element: <Navigate to="/dashboard" />,
+  },
+]
+
 
 function App() {
+  const router = useMemo(() => {
+    const accessToken = localStorage.getItem("x-auth-token");
+    return createBrowserRouter(accessToken ? protectedRoutes : publicRoutes);
+  }, []);
   return (
     <ThemeProviderContext>
       <ThemeProvider theme={theme} >
@@ -115,7 +126,6 @@ function App() {
       </ThemeProvider>
     </ThemeProviderContext>
   )
-
 }
 
 export default App

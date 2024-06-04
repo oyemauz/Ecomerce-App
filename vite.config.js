@@ -4,7 +4,7 @@ import eslint from "vite-plugin-eslint"
 import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), eslint()],
+  plugins: [react(), eslint({ fix: true })],
   base: "./",
   resolve: {
     alias: {

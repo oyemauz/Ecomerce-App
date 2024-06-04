@@ -50,7 +50,7 @@ export async function CreateNewProduct(items) {
 }
 
 export async function updateProduct(items) {
-  console.log(items.id)
+  console.log("items-> ", items)
   if (!items || !items.id) {
     console.error("Invalid items object:", items);
     throw new Error("Invalid items object");
@@ -58,7 +58,7 @@ export async function updateProduct(items) {
 
   const productRef = doc(db, "Products", items.id);
 
-  const url = await uploadImageOnFireStore(items.imageUrl);
+  const url = await uploadImageOnFireStore(items.imageUrl[0]);
   console.log("image url-> ", url)
   try {
     await updateDoc(productRef, {

@@ -66,28 +66,11 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  let isUser;
   async function SubmitForm(e) {
     e.preventDefault();
     if (!email || !password) return;
-
-    isUser = await signInUser(email, password);
-
-    if (isUser) {
-      navigate('/dashboard')
-      console.log(isUser)
-    }
+    await signInUser({ email, password }, navigate);
   }
-
-  useEffect(
-    function () {
-      if (isUser) navigate("/dashboard", { replace: true })
-      else {
-        navigate("/login")
-      }
-    },
-    [isUser, navigate]
-  );
 
   return (
     <Form onSubmit={SubmitForm}>

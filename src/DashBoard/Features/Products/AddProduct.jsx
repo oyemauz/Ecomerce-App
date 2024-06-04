@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form"
-import { CreateNewProduct, getProductID, updateProduct } from '../../../api/getProductsDetails';
+import { CreateNewProduct, } from '../../../api/getProductsDetails';
+
 // import { useEffect } from 'react';
 // CreateNewProduct
 
@@ -71,48 +72,24 @@ const Button = styled.button`
 
 AddProduct.propTypes = {
   setnewProduct: PropTypes.any,
-  id: PropTypes.any,
+  item: PropTypes.any,
   setEdit: PropTypes.any,
   isEdit: PropTypes.any,
   setdropdown: PropTypes.any
 }
 
-export default function AddProduct({ setdropdown, isEdit, setnewProduct, id, setEdit }) {
-
-  //, price, quantity, imageUrl, status
-
-  async function getProduct(itemId) {
-    const product = await getProductID(itemId);
-    return product;
-  }
-  console.log("id -> ", id)
+export default function AddProduct({ setdropdown, isEdit, setnewProduct, item, setEdit }) {
   const {
     register,
     handleSubmit,
-    // watch,
-    // formState: { errors },
   } = useForm({
-    defaultValues: { status: 'available' }
+    defaultValues: item
   });
 
   const onSubmit = async (data) => {
     if (isEdit) {
       try {
-        const product = await getProduct(id);
-        console.log("p ->", product);
-
-        if (product) {
-          const items = {
-            ...data,
-            id: product.id
-          };
-
-          const isSuccess = await updateProduct(items);
-          console.log(isSuccess);
-          setEdit(false);
-        } else {
-          console.error("Product not found");
-        }
+        /* Helo */
       } catch (error) {
         console.error("Error during submission:", error);
       }

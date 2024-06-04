@@ -17,12 +17,12 @@ font-size:1.2rem;
 border-radius:6px;
 `;
 DropDownItem.propTypes = {
-  itemId: PropTypes.any,
+  item: PropTypes.any,
   setdropdown: PropTypes.any
 }
 
 
-export default function DropDownItem({ setdropdown, itemId }) {
+export default function DropDownItem({ setdropdown, item }) {
   const [isdeleteProduct, setdeleteProduct] = useState(false);
   const [isEdit, setEdit] = useState(false);
   return (
@@ -31,8 +31,8 @@ export default function DropDownItem({ setdropdown, itemId }) {
         <div className="edit_item" onClick={() => setEdit(true)}> <ion-icon name="create-outline"></ion-icon> Edit</div>
         <div onClick={() => setdeleteProduct(!isdeleteProduct)}> <ion-icon name="trash-outline"></ion-icon> Delete</div>
       </DropDown>
-      {isdeleteProduct ? <DeleteProduct setdropdown={setdropdown} setdeleteProduct={setdeleteProduct} itemId={itemId} /> : ''}
-      {isEdit ? <AddProduct setdropdown={setdropdown} isEdit={isEdit} setEdit={setEdit} id={itemId} /> : ''}
+      {isdeleteProduct ? <DeleteProduct setdropdown={setdropdown} setdeleteProduct={setdeleteProduct} itemId={item.id} /> : ''}
+      {isEdit ? <AddProduct setdropdown={setdropdown} isEdit={isEdit} setEdit={setEdit} item={item} /> : ''}
     </>
   )
 }
