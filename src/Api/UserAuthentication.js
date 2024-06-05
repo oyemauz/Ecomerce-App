@@ -1,8 +1,11 @@
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "@/config/firebase.config";
 import toast from "react-hot-toast";
-import { getDoc, doc } from "firebase/firestore";
 import { db } from "@/config/firebase.config";
+import { collection, getDoc, doc, setDoc } from "firebase/firestore";
+import { DB_COLLECTIONS } from "../constants/db.constants";
+import { getStorage, getDownloadURL, uploadBytes } from "firebase/storage";
+import { storageRef as sRef } from "@/config/firebaseStorage.config";
 
 async function signInUser({ email, password }, navigate) {
   try {
@@ -12,9 +15,11 @@ async function signInUser({ email, password }, navigate) {
       password
     );
     const token = await userCredential.user.getIdToken();
+    const user = await getUser(userCredential.user.uid);
     localStorage.setItem("x-auth-token", token);
-    navigate("/dashboard");
+    navigate("dashboard");
     toast.success("Successfully SignIn");
+    return user;
   } catch (err) {
     toast.error(err.message);
   }
@@ -24,15 +29,15 @@ export async function logOutUser() {
   try {
     const isSignOut = await signOut(auth);
     localStorage.removeItem("x-auth-token");
-    toast("User Logout Successfully");
+    toast.success("User Logout Successfully");
     return isSignOut;
   } catch (error) {
     toast.error("Error: " + error.message);
   }
 }
 
-export async function getUser(id = "7Mk5JFOcjdWnPkOHsTbIm8E2hyX2") {
-  const productsCol = doc(db, "admins", id);
+async function getUser(id) {
+  const productsCol = doc(db, "users", id);
   const docSnap = await getDoc(productsCol);
 
   if (docSnap.exists()) {
@@ -43,4 +48,33 @@ export async function getUser(id = "7Mk5JFOcjdWnPkOHsTbIm8E2hyX2") {
   }
 }
 
-export { signInUser };
+export { signInUser, getUser };
+
+// Add new User Info into DB_Firestore
+
+export async function AddUser(user) {
+  const { name, status, imageUrl, email, userName, password } = user;
+  const url = await uploadImageOnFireStore(imageUrl[0]);
+  const colRef = collection(db, DB_COLLECTIONS.USERS);
+  const docRef = doc(colRef);
+  await setDoc(docRef, {
+    id: docRef.id,
+    name,
+    imageUrl: url,
+    status,
+    email,
+    userName,
+    password,
+  });
+}
+
+async function uploadImageOnFireStore(file) {
+  const storage = getStorage();
+  const storageRefInstance = sRef(storage, `userImages/${file.name}`);
+
+  await uploadBytes(storageRefInstance, file);
+
+  const downloadURL = await getDownloadURL(storageRefInstance);
+  // console.log('Uploaded file and got download URL:', downloadURL);
+  return downloadURL;
+}

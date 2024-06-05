@@ -113,10 +113,10 @@ const protectedRoutes = [
       },
     ],
   },
-  {
-    path: "/",
-    element: <Navigate to="/dashboard" />,
-  },
+  // {
+  //   path: "/",
+  //   element: <Navigate to="/dashboard" />,
+  // },
 ];
 
 function App() {

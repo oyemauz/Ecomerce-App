@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../config/firebase.config";
 import { getStorage, getDownloadURL, uploadBytes } from "firebase/storage";
-import { storageRef as sRef } from "../config/firebaseStorage.config";
+import { storageRef as sRef } from "@/config/firebaseStorage.config";
 import { DB_COLLECTIONS } from "../constants/db.constants";
 import toast from "react-hot-toast";
 
