@@ -1,41 +1,34 @@
-import { useState, createContext } from 'react';
-import PropTypes from 'prop-types'
+import { useState, createContext } from "react";
+import PropTypes from "prop-types";
 
 const ThemeContext = createContext(null);
 
 const ThemeProvider = ({ children }) => {
   const [sidebar, setSidebar] = useState(false);
-  const[menu,setmenu]=useState(false);
+  const [menu, setMenu] = useState(false);
 
- 
-
-  function toggleSidebar(){
+  function toggleSidebar() {
     setSidebar(true);
   }
-  function toggleMenu(){
-      setmenu(!menu);
+  function toggleMenu() {
+    setMenu(!menu);
   }
 
-  const value={
+  const value = {
     sidebar,
     setSidebar,
     toggleSidebar,
     menu,
     toggleMenu,
-}
+  };
 
   return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };
 
-
 ThemeProvider.propTypes = {
-    children: PropTypes.any,
-}
-
+  children: PropTypes.any,
+};
 
 export { ThemeProvider, ThemeContext };
-

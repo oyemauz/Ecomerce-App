@@ -16,8 +16,8 @@ async function signInUser({ email, password }, navigate) {
     );
     const token = await userCredential.user.getIdToken();
     const user = await getUser(userCredential.user.uid);
-    localStorage.setItem("x-auth-token", token);
-    navigate("dashboard");
+    //    localStorage.setItem("x-auth-token", token);
+    navigate("/dashboard");
     toast.success("Successfully SignIn");
     return user;
   } catch (err) {
