@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useQuery } from "@tanstack/react-query";
-// import { Spinner } from "flowbite-react";
 import ErrorPage from "../../../ui/common/ErrorPage";
 import { getProducts } from "../../../api/getProductsDetails";
 import ProductsList from "./Product.";
@@ -51,7 +50,7 @@ const ProductBtn = styled.button`
   }
 `;
 
-export default function Products() {
+export default function ProductList() {
   const [isNewProduct, setnewProduct] = useState(false);
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["Products"],

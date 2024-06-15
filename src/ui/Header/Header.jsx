@@ -1,19 +1,17 @@
-import HeaderWishListCart from "./HeaderWishListCart"
-import MainNavbar from "./MainNavbar"
-import TopNavbar from "./TopNavbar"
-import  usePdata  from "../../ThemeContext/usePData";
-
+import HeaderWishListCart from "./HeaderWishListCart";
+import MainNavbar from "./MainNavbar";
+import TopNavbar from "./TopNavbar";
+import usePdata from "../../ThemeContext/useProduct";
 
 function Header() {
-    const s=usePdata();
-    return (
-        <header style={{paddingBottom:"3rem"}}>
-            {s.sidebar || <TopNavbar/>}
-            <HeaderWishListCart/>
-           {s.sidebar ||  <MainNavbar/> }
-        </header>
-    )
+  const s = usePdata();
+  return (
+    <header style={{ paddingBottom: "3rem" }}>
+      {s.sidebar || <TopNavbar />}
+      <HeaderWishListCart />
+      {s.sidebar || <MainNavbar />}
+    </header>
+  );
 }
 
-export default Header
-
+export default Header;

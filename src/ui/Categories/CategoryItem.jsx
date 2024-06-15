@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Stars from "../Stars";
 import PropTypes from "prop-types";
 import Logos from "../../utils/db.categories";
+import { useOrder } from "@/contextApi/orderDetails";
 
 const Div = styled.div`
   background-color: white;
@@ -60,12 +61,12 @@ CategoryItem.propTypes = {
 };
 
 function CategoryItem({ item }) {
+  const { order, setOrder } = useOrder();
+
   return (
     <Div>
       <Img src={item.imageUrl} alt={item.name} />
-      <ItemName>
-        {item.name} {item.quantity}
-      </ItemName>
+      <ItemName>{item.name} 1kg</ItemName>
       <Stock>In {item.status}</Stock>
 
       <StarRating>
@@ -82,7 +83,7 @@ function CategoryItem({ item }) {
         <span>
           <ion-icon name={Logos.share_logo}></ion-icon>
         </span>
-        <span className="last">
+        <span className="last" onClick={() => setOrder([...order, item])}>
           <ion-icon name={Logos.cart_logo}></ion-icon>
         </span>
       </ItemIcons>

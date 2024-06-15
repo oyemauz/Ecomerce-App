@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Footer from "../ui/common/Footer";
 import Header from "../ui/Header/Header";
 import { Outlet } from "react-router-dom";
+import { useOrder } from "@/contextApi/orderDetails";
+import OrderCanvas from "@/ui/orders/OrderCanvas";
 
 const Section = styled.section`
   padding: 1.4rem 3rem 0 3rem;
@@ -17,9 +19,11 @@ const Section = styled.section`
 `;
 
 function AppLayout() {
+  const { offCanvas } = useOrder();
   return (
     <div className="app">
       <Section>
+        {offCanvas ? <OrderCanvas /> : ""}
         <Header />
         <Outlet />
         <Footer />

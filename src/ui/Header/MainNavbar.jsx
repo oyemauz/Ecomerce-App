@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Data from "../../utils/db.appdata";
 import Button from "../common/Button";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/contextApi/authenticateUser";
+import { NAV_COLLECTIONS_LINK as NAV_COLLECTIONS } from "@/constants";
 
 const UL = styled.ul`
   display: flex;
@@ -40,42 +40,58 @@ const LI = styled.li`
   }
 `;
 
+const nav = [
+  {
+    name: "Home",
+    icon: "home",
+    link: NAV_COLLECTIONS.HOME,
+  },
+  {
+    name: "Grocery",
+    icon: "fast-food",
+    link: NAV_COLLECTIONS.GROCERY,
+  },
+  {
+    name: "Clean & HouseHold",
+    icon: "nuclear",
+    link: NAV_COLLECTIONS.CLEAN_HOUSEHOLD,
+  },
+  {
+    name: "Blogs",
+    icon: "megaphone",
+    link: NAV_COLLECTIONS.BLOGS,
+  },
+  {
+    name: "Contact",
+    icon: "call",
+    link: NAV_COLLECTIONS.CONTACT,
+  },
+  {
+    name: "About",
+    icon: "information-circle",
+    link: NAV_COLLECTIONS.ABOUT,
+  },
+  {
+    name: "Help",
+    icon: "help-circle",
+    link: NAV_COLLECTIONS.HELP,
+  },
+];
+
 function MainNavbar() {
   const auth = useAuth();
 
   return (
     <UL>
-      <LI>
-        <ion-icon name="home"></ion-icon>{" "}
-        <Link to={"/"}>{Data.MainNavbar.home}</Link>{" "}
-      </LI>
-      <LI>
-        <ion-icon name="fast-food"></ion-icon>
-        <Link to="/app/groceries">{Data.MainNavbar.grocery}</Link>
-      </LI>
-      <LI>
-        <ion-icon name="nuclear"></ion-icon>
-        <Link to="/app/clean-house">{Data.MainNavbar.clean_household}</Link>
-      </LI>
-      <LI>
-        <ion-icon name="megaphone"></ion-icon>
-        <Link to="/app/blogs">{Data.MainNavbar.blogs}</Link>
-      </LI>
-      <LI>
-        <ion-icon name="call"></ion-icon>
-        <Link to="/app/contact">{Data.MainNavbar.contact}</Link>
-      </LI>
-      <LI>
-        <ion-icon name="information-circle"></ion-icon>
-        <Link to="/app/about">{Data.MainNavbar.about}</Link>
-      </LI>
-      <LI>
-        <ion-icon name="help-circle"></ion-icon>
-        <Link to="/app/help">{Data.MainNavbar.help}</Link>
-      </LI>
+      {nav.map((item, i) => (
+        <LI key={i}>
+          <ion-icon name={item.icon}></ion-icon>
+          <Link to={item.link}>{item.name}</Link>
+        </LI>
+      ))}
       <LI>
         {auth.currentUser ? (
-          <Link to="/dashboard">
+          <Link to={NAV_COLLECTIONS.DASHBOARD}>
             <Button
               color="white"
               size={window.innerWidth > 768 ? "large" : "medium"}
@@ -84,12 +100,12 @@ function MainNavbar() {
             </Button>
           </Link>
         ) : (
-          <Link to="/login">
+          <Link to={NAV_COLLECTIONS.LOGIN}>
             <Button
               color="white"
               size={window.innerWidth > 768 ? "large" : "medium"}
             >
-              {Data.MainNavbar.register}
+              Register Vendor
             </Button>
           </Link>
         )}

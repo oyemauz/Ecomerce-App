@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import styled from "styled-components";
 
-ProductsList.propTypes = {
+Product.propTypes = {
   item: PropTypes.any,
 };
 
@@ -14,9 +14,9 @@ const DropDown = styled.div`
   }
 `;
 
-export default function ProductsList({ item }) {
+export default function Product({ item }) {
   const [isdropdown, setdropdown] = useState(false);
-
+  // if (isdropdown) return false;
   return (
     <div className="product_row" style={{ height: "6.4rem" }}>
       <img src={item.imageUrl} alt={item.name} />

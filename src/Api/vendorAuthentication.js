@@ -14,12 +14,12 @@ async function signInUser({ email, password }, navigate) {
       email,
       password
     );
+    // eslint-disable-next-line no-unused-vars
     const token = await userCredential.user.getIdToken();
-    const user = await getUser(userCredential.user.uid);
-    //    localStorage.setItem("x-auth-token", token);
+    //const user = await getUser(userCredential.user.uid);
     navigate("/dashboard");
-    toast.success("Successfully SignIn");
-    return user;
+    toast.success("Successfully Sign In");
+    //  return user;
   } catch (err) {
     toast.error(err.message);
   }
@@ -28,32 +28,31 @@ async function signInUser({ email, password }, navigate) {
 export async function logOutUser() {
   try {
     const isSignOut = await signOut(auth);
-    localStorage.removeItem("x-auth-token");
     toast.success("User Logout Successfully");
     return isSignOut;
   } catch (error) {
     toast.error("Error: " + error.message);
+    return null;
   }
 }
 
-async function getUser(id) {
-  const productsCol = doc(db, "users", id);
+async function getVendor(id) {
+  const productsCol = await doc(db, "vendors", id);
   const docSnap = await getDoc(productsCol);
-
   if (docSnap.exists()) {
     return docSnap.data();
   } else {
-    // docSnap.data() will be undefined in this case
-    toast.error("No such document!");
+    toast.error("vendor  not found!");
+    return null;
   }
 }
 
-export { signInUser, getUser };
+export { signInUser, getVendor };
 
 // Add new User Info into DB_Firestore
 
-export async function AddUser(user) {
-  const { name, status, imageUrl, email, userName, password } = user;
+export async function AddVendor(vendor) {
+  const { name, status, imageUrl, email } = vendor;
   const url = await uploadImageOnFireStore(imageUrl[0]);
   const colRef = collection(db, DB_COLLECTIONS.USERS);
   const docRef = doc(colRef);
@@ -63,8 +62,6 @@ export async function AddUser(user) {
     imageUrl: url,
     status,
     email,
-    userName,
-    password,
   });
 }
 

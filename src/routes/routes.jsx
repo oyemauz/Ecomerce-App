@@ -16,8 +16,7 @@ import About from "../Pages/About";
 import Help from "../Pages/Help";
 import ErrorPage from "../ui/common/ErrorPage";
 import Home from "../ui/common/Home";
-
-import { AuthRoute, AuthLoginUser } from "./AuthRoute";
+import { AuthRoute, IfLoginUser } from "./AuthRoute";
 
 export default [
   {
@@ -97,9 +96,9 @@ export default [
   {
     path: "/login",
     element: (
-      <AuthLoginUser>
+      <IfLoginUser>
         <Login />
-      </AuthLoginUser>
+      </IfLoginUser>
     ),
   },
 ];

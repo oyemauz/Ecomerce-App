@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Input from "@/ui/common/Input";
 import Button from "@/ui/common/Button";
 import UpdatePassword from "./UpdatePassword";
-import { useUser } from "@/contextApi/userContext";
+import { useAuth } from "@/contextApi/authenticateUser";
 
 const UserProfile = styled.div`
   padding: 2.4rem 4.6rem;
@@ -81,8 +81,7 @@ const Field = styled.div`
 `;
 
 export default function Profile() {
-  const { user } = useUser();
-  console.log(user);
+  const { currentUser: user } = useAuth();
 
   return (
     <>
@@ -93,12 +92,13 @@ export default function Profile() {
           <UserData>
             <Field>
               <label>Email Address</label>
-              <Input type="text" disabled />
+              <Input type="text" defaultValue={user.email} disabled />
             </Field>
             <Field>
               <label>Full Name</label>
               <Input
                 type="text"
+                defaultValue={user.name}
                 style={{ border: "1px solid var(--color-slate-200)" }}
               />
             </Field>

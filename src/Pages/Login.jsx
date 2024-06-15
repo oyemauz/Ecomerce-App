@@ -2,9 +2,8 @@ import styled from "styled-components";
 import Button from "../ui/common/Button";
 import "../index.css";
 import { useState } from "react";
-import { signInUser } from "@/api/userAuthentication";
+import { signInUser } from "@/api/vendorAuthentication";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "@/contextApi/userContext";
 
 const Form = styled.form`
   background-color: var(--color-slate-100);
@@ -63,14 +62,14 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { setUser } = useUser();
+  //const { setUser } = useUser();
 
   async function SubmitForm(e) {
     e.preventDefault();
     if (!email || !password) return;
-    const user = await signInUser({ email, password }, navigate);
-    console.log(user);
-    setUser(user);
+    await signInUser({ email, password }, navigate);
+    //console.log(user);
+    //setUser(user);
   }
 
   return (
