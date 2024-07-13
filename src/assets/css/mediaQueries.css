@@ -1,0 +1,121 @@
+@media screen and (max-width: 800px) {
+  html {
+    font-size: 9px;
+  }
+  .app_img div span {
+    font-size: 1.6rem;
+  }
+  .app_img div h1 {
+    font-size: 2.6rem;
+  }
+  .app_img {
+    height: 300px;
+  }
+  header ul li ion-icon {
+    display: block;
+  }
+  .responsiveSidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    overflow-y: scroll;
+    z-index: 1;
+    background-color: var(--color-slate-100);
+    display: block;
+    transition: 1.5s;
+  }
+  .hideResponsiceSidebar {
+    display: none;
+    transition: 1.5s;
+  }
+  .responsiveSidebar img {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 25%;
+    width: 50%;
+  }
+  .responsiveSidebar ul {
+    display: block;
+    position: relative;
+    top: 90px;
+    background-color: var(--color-slate-100);
+    color: black;
+  }
+  .responsiveSidebar ul li {
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    font-size: 1.3rem;
+  }
+  .responsiveSidebar nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .responsiveSidebar div {
+    display: flex;
+    flex-direction: column;
+  }
+  .responsiveSidebar .subItems {
+    transition: 1.5s;
+    display: none;
+  }
+  .menu ion-icon {
+    font-size: 3.4rem;
+  }
+  .menu {
+    position: relative;
+    top: 0px;
+    left: 240px;
+    cursor: pointer;
+    transition: 3s;
+  }
+  .below_footer p {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  main ul li {
+    align-items: start;
+  }
+  main ul li span {
+    display: none;
+  }
+  html {
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .below_footer ion-icon {
+    display: none;
+  }
+  .below_footer p {
+    display: none;
+  }
+  .below_footer::after {
+    content: "\00A9 All rights reserved";
+    /* Unicode for © symbol */
+    display: block;
+    width: 100%;
+    text-align: center;
+    /* Center the content */
+    margin: 0;
+    /* Remove any default margin */
+    color: rgba(147, 147, 147, 1);
+  }
+  form {
+    width: 30rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hideWishlist {
+    display: none;
+  }
+  form {
+    width: 20rem;
+  }
+}

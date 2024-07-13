@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useAuth } from "@/contextApi/authenticateUser";
 import { Loading } from "react-fullscreen-loading";
 import { Navigate } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
 function AuthRoute({ children }) {
   const auth = useAuth();
 
@@ -18,7 +18,6 @@ function AuthRoute({ children }) {
   return auth.currentUser ? children : <Navigate to={"/login"} />;
 }
 
-// eslint-disable-next-line react/prop-types
 function IfLoginUser({ children }) {
   const auth = useAuth();
 

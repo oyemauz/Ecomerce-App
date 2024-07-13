@@ -2,10 +2,10 @@ import ListItems from "../ui/MainSection/ListItems";
 import styled from "styled-components";
 import MainQuotes from "../ui/MainSection/MainQuotes";
 import MainNavbar from "../ui/Header/MainNavbar";
-import usePdata from "../ThemeContext/useProduct";
 import Logo from "../ui/Header/Logo";
 import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
+import useProduct from "@/ThemeContext/useProduct";
 
 const Main = styled.main`
   display: grid;
@@ -38,7 +38,7 @@ export default function ResponsiveSideBar() {
   const isGrocery = location.pathname === "/groceries";
   // console.log(isGrocery);
 
-  const { menu, toggleSidebar } = usePdata();
+  const { menu, toggleSidebar } = useProduct();
   const isMobile = useMediaQuery({ maxWidth: 800 });
   const s = isMobile ? () => toggleSidebar() : null;
 
@@ -50,7 +50,7 @@ export default function ResponsiveSideBar() {
         <>
           <div
             className={`${
-              menu ? "responsiveSidebar" : "hideResponsiceSidebar"
+              menu ? "responsiveSidebar" : "hideResponsiveSidebar"
             }`}
           >
             <Logo />

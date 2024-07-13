@@ -3,6 +3,7 @@ import Stars from "../Stars";
 import PropTypes from "prop-types";
 import Logos from "../../utils/db.categories";
 import { useOrder } from "@/contextApi/orderDetails";
+import toast from "react-hot-toast";
 
 const Div = styled.div`
   background-color: white;
@@ -63,6 +64,11 @@ CategoryItem.propTypes = {
 function CategoryItem({ item }) {
   const { order, setOrder } = useOrder();
 
+  function addItemToCart() {
+    setOrder([...order, item]);
+    toast.success("Item add to Cart");
+  }
+
   return (
     <Div>
       <Img src={item.imageUrl} alt={item.name} />
@@ -83,7 +89,7 @@ function CategoryItem({ item }) {
         <span>
           <ion-icon name={Logos.share_logo}></ion-icon>
         </span>
-        <span className="last" onClick={() => setOrder([...order, item])}>
+        <span className="last" onClick={addItemToCart}>
           <ion-icon name={Logos.cart_logo}></ion-icon>
         </span>
       </ItemIcons>

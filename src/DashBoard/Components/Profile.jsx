@@ -82,6 +82,7 @@ const Field = styled.div`
 
 export default function Profile() {
   const { currentUser: user } = useAuth();
+  console.log("current user-> ", user);
 
   return (
     <>

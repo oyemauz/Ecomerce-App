@@ -90,7 +90,7 @@ export default function AddProduct({
   const onSubmit = async (data) => {
     if (isEdit) {
       try {
-        /* Helo */
+        /* Hello */
         const editItem = {
           ...data,
           imageUrl: data.imageUrl || item.imageUrl,

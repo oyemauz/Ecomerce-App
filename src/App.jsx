@@ -1,4 +1,3 @@
-import "./index.css";
 import { ThemeProvider } from "styled-components";
 import { ThemeProvider as ThemeProviderContext } from "./ThemeContext/ContextProvider";
 import { RouterProvider } from "react-router-dom";

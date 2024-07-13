@@ -1,0 +1,174 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  padding: 1rem;
+  line-height: 1.5;
+  border-radius: 0.5rem;
+}
+
+.app {
+  background-color: var(--color-slate-100);
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.flexGap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flexDirection {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gap {
+  gap: 5rem;
+}
+
+/* Header CSS */
+
+header {
+  font-size: 1.3rem;
+}
+
+.wishListcart {
+  padding: 0.2rem 1.8rem;
+  background-color: white;
+}
+
+header img {
+  width: 100px;
+  height: 60px;
+}
+
+header p {
+  font-size: 10px;
+}
+
+/* Main Section */
+
+.app_img {
+  background-image: url("../images/main_img.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  /* filter: brightness(0.7);  */
+}
+
+.app_img div {
+  font-size: 1.4rem;
+  color: white;
+  position: absolute;
+  top: 15rem;
+  left: 6rem;
+  font-weight: bold;
+}
+
+.app_img div span {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.app_img div h1 {
+  font-size: 4.2rem;
+  letter-spacing: 3px;
+  margin-bottom: 4rem;
+  line-height: 1;
+}
+
+main ion-icon,
+.responsiveSidebar ul li ion-icon,
+.wishListcart ion-icon {
+  font-size: 20px;
+}
+
+.responsiveSidebar ion-icon {
+  color: var(--color-lime-500);
+}
+
+main ul div li ion-icon,
+main ul li:first-child ion-icon {
+  color: var(--color-lime-500);
+}
+
+main ul li:last-child ion-icon {
+  color: var(--color-lime-500);
+}
+
+.category ion-icon {
+  color: white;
+}
+
+.category .category_icon {
+  display: flex;
+  position: absolute;
+  right: 20px;
+}
+
+/* Custom Rating Star  */
+
+.icons ion-icon {
+  font-size: 25px;
+}
+
+.icons span {
+  cursor: pointer;
+}
+
+.icons .last ion-icon {
+  background-color: #000;
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: #fff;
+}
+
+header ul li ion-icon {
+  display: none;
+}
+
+.hidemobileview {
+  left: -250px;
+}
+
+.below_footer div a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.below_footer p {
+  width: 30%;
+}
+
+.below_footer ion-icon {
+  font-size: 1.8rem;
+}
+
+.footer::after {
+  content: "\00A9  All right reserved Powered by Infinity Cortex";
+  text-align: center;
+  display: block;
+  color: rgba(147, 147, 147, 1);
+}

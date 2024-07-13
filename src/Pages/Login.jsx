@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Button from "../ui/common/Button";
-import "../index.css";
 import { useState } from "react";
 import { signInUser } from "@/api/vendorAuthentication";
 import { useNavigate } from "react-router-dom";
@@ -68,13 +67,20 @@ export default function Login() {
     e.preventDefault();
     if (!email || !password) return;
     await signInUser({ email, password }, navigate);
-    //console.log(user);
-    //setUser(user);
+  }
+
+  function goTOHome() {
+    navigate("/");
   }
 
   return (
     <Form onSubmit={SubmitForm}>
-      <Img src="/app_logo_img-removebg.png" alt="Grocery Go" />
+      <Img
+        style={{ cursor: "pointer" }}
+        src="/app_logo_img-removebg.png"
+        alt="Grocery Go"
+        onClick={goTOHome}
+      />
       <Row>
         <label className="label">Enter Email </label>
         <Input
@@ -94,7 +100,11 @@ export default function Login() {
         />
       </Row>
       {/* <Row> */}
-      <Button style={{ width: "100%", marginBottom: "1.4rem" }} size="medium">
+      <Button
+        type="submit"
+        style={{ width: "100%", marginBottom: "1.4rem" }}
+        size="medium"
+      >
         Login
       </Button>
       {/* </Row> */}

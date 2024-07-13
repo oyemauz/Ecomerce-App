@@ -56,7 +56,15 @@ export default [
   },
   {
     path: "/",
-    element: <Navigate to="/" />,
+    element: (
+      <IfLoginUser>
+        <Navigate to="/" />,
+      </IfLoginUser>
+    ),
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
   {
     path: "/dashboard",
@@ -93,12 +101,12 @@ export default [
       },
     ],
   },
-  {
-    path: "/login",
-    element: (
-      <IfLoginUser>
-        <Login />
-      </IfLoginUser>
-    ),
-  },
+  // {
+  //   path: "/",
+  //   element: (
+  //     <IfLoginUser>
+  //       <AppLayout />,
+  //     </IfLoginUser>
+  //   ),
+  // },
 ];

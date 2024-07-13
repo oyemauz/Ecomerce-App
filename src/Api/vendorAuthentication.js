@@ -16,10 +16,9 @@ async function signInUser({ email, password }, navigate) {
     );
     // eslint-disable-next-line no-unused-vars
     const token = await userCredential.user.getIdToken();
-    //const user = await getUser(userCredential.user.uid);
+    console.log(token);
     navigate("/dashboard");
     toast.success("Successfully Sign In");
-    //  return user;
   } catch (err) {
     toast.error(err.message);
   }

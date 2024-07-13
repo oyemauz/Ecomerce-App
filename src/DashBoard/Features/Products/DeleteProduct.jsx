@@ -41,6 +41,7 @@ const DIV = styled.div`
 
   .delete_btn {
     color: #fff;
+    background-color: var(--color-red-700);
   }
 `;
 
